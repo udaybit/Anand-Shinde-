@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title> ANAND SHINDE — Professional Resume</title>
+  <title>SHINDE ANAND ANIL — Professional Resume</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
@@ -172,6 +172,97 @@
     footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px;padding:6px}
 
     a:focus,button:focus,summary:focus{outline:3px solid rgba(184,137,0,0.18);outline-offset:3px}
+  /* ---------- Responsive adjustments ---------- */
+@media (max-width: 1024px) {
+  header.header {
+    grid-template-columns: 1fr 1fr; /* Laptop / tablet */
+  }
+  .avatar { width: 180px; height: 180px; }
+  .head-right .title { font-size: 20px; }
+  .typing { font-size: 16px; }
+}
+
+@media (max-width: 720px) {
+  header.header {
+    grid-template-columns: 1fr; /* Mobile: stacked */
+    gap: 18px;
+  }
+  .avatar { width: 140px; height: 140px; }
+  .head-right .title { font-size: 18px; }
+  .typing { font-size: 14px; min-height: 20px; }
+  .main-grid { grid-template-columns: 1fr; }
+  aside.side { flex-direction: column; }
+  .side .mini { padding: 12px; }
+  .btn { padding: 10px 12px; font-size: 13px; }
+}
+@media (max-width:768px){
+  /* HEADER STACKS */
+  header.header {
+    grid-template-columns:1fr; /* single column */
+    padding:16px;
+  }
+  .head-right {
+    padding:12px 0 0 0;
+  }
+
+  /* AVATAR SIZES */
+  .avatar {
+    width:140px;
+    height:140px;
+  }
+
+  /* FONT SIZES */
+  .title {
+    font-size:18px;
+  }
+  .typing {
+    font-size:14px;
+  }
+  .summary {
+    font-size:13px;
+  }
+
+  /* MAIN GRID STACKS */
+  .main-grid {
+    grid-template-columns:1fr; /* sidebar under main content */
+    gap:16px;
+  }
+
+  /* SECTIONS & CARDS */
+  section.card {
+    padding:12px;
+  }
+  .exp {
+    padding:12px;
+  }
+
+  /* BUTTONS */
+  .btn {
+    padding:10px 14px;
+    font-size:13px;
+  }
+}
+/* =================== BACKGROUND ANIMATION =================== */
+body {
+  background: linear-gradient(270deg, #ffefba, #ffffff, #ffe680, #fbfbfc);
+  background-size: 800% 800%;
+  animation: gradientBG 20s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+
+/* Mobile tweak: slower gradient to save battery */
+@media (max-width:768px){
+  body {
+    animation: gradientBG 40s ease infinite;
+  }
+}
+
+
   </style>
 </head>
 <body>
@@ -183,10 +274,10 @@
         <div class="avatar" role="img" aria-label="Profile photo">
           <img src="https://via.placeholder.com/900x900.png?text=Profile+Photo" alt="Profile photo — Shinde Anand Anil">
         </div>
-        <div class="name"> ANAND SHINDE </div>
+        <div class="name">SHINDE ANAND ANIL</div>
         <div class="role">Manager, Powertrain — Engineering & Development</div>
         <div class="meta">
-          <div>Mobile: <strong> 98903 35259 </strong></div>
+          <div>Mobile: <strong>8669414519</strong></div>
           <div>Hadapsar, Pune - 28</div>
           <div>Email: <a href="mailto:aashinde_be80@rediffmail.com" style="color:var(--gold-mid);text-decoration:none">aashinde_be80@rediffmail.com</a></div>
         </div>
@@ -496,7 +587,6 @@ Email: aashinde_be80@rediffmail.com
   </script>
  
 
+
 </body>
 </html>
-
-
