@@ -15,9 +15,9 @@
       --panel: #ffffff;
       --muted: #6b7280;
       --text: #071228;
-      --gold-dark: #7a5a00;      /* deep/dark gold (primary) */
-      --gold-mid: #b88900;       /* medium gold */
-      --gold-light: #d8b457;     /* light gold (accent) */
+      --gold-dark: #7a5a00;
+      --gold-mid: #b88900;
+      --gold-light: #d8b457;
       --glass: rgba(7,18,40,0.03);
       --soft-gold-shadow: rgba(184,137,0,0.12);
       --shadow: 0 16px 50px rgba(12,22,60,0.07);
@@ -59,12 +59,11 @@
     }
     .avatar{
       width:240px;height:240px;border-radius:18px;overflow:hidden;
-      border:6px solid linear-gradient(90deg,var(--gold-dark),var(--gold-light)); /* fallback handled below */
+      border:6px solid linear-gradient(90deg,var(--gold-dark),var(--gold-light));
       background:linear-gradient(180deg,#fff,#fff);
       box-shadow:0 18px 40px var(--soft-gold-shadow);
       transition:transform .45s, box-shadow .45s;
     }
-    /* fallback border: use solid color via pseudo element */
     .avatar { position: relative; }
     .avatar::before{
       content:"";position:absolute;inset:0;border-radius:14px;padding:6px;
@@ -102,8 +101,8 @@
     .head-right{padding:6px 6px 6px 0}
     .title{font-size:24px;font-weight:700;font-family:Poppins,Inter;margin-bottom:8px}
     .title .highlight{background:linear-gradient(90deg,var(--gold-dark),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    
-    /* TYPING — dark gold, bold, very visible, with caret */
+
+    /* TYPING */
     .typing-wrap { display:flex; align-items:center; gap:14px; margin-bottom:12px; flex-wrap:wrap }
     .typing {
       font-weight:800;
@@ -116,7 +115,6 @@
       white-space:nowrap;
       overflow:hidden;
     }
-    /* caret */
     .typing-caret{
       width:3px; height:24px; background:var(--gold-dark); display:inline-block;
       animation: blink-caret 1s steps(2,end) infinite; border-radius:2px;
@@ -153,9 +151,8 @@
     summary{cursor:pointer;font-weight:700;color:var(--gold-dark);list-style:none}
     summary::-webkit-details-marker{display:none}
 
+    /* ========== VERBATIM & SIDEBAR ========== */
     .verbatim{white-space:pre-wrap;color:var(--muted);font-size:14px;background:transparent;padding:10px;border-radius:8px}
-
-    /* ========== SIDEBAR ========== */
     .side{display:flex;flex-direction:column;gap:14px}
     .side .mini{
       padding:14px;border-radius:12px;background:linear-gradient(180deg,#fff,#fff);
@@ -165,7 +162,6 @@
     .skills{display:flex;flex-wrap:wrap;gap:8px}
     .skill-pill{background:linear-gradient(90deg,#fff,#fff);padding:8px 10px;border-radius:999px;border:1px solid rgba(7,18,40,0.03);font-weight:600;color:var(--text);font-size:13px}
 
-    /* contact box premium */
     .contact-box{
       background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
       border:1px solid rgba(184,137,0,0.12); padding:12px;border-radius:12px;
@@ -173,57 +169,44 @@
     }
     .contact-box a{color:var(--gold-mid);font-weight:700;text-decoration:none}
 
-    /* floating resume (mobile) */
     .floating{position:fixed;right:18px;bottom:18px;z-index:999;display:none}
     @media (max-width:720px){ .floating{display:block} }
 
-    /* footer */
     footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px;padding:6px}
 
-    /* focus */
     a:focus,button:focus,summary:focus{outline:3px solid rgba(184,137,0,0.18);outline-offset:3px}
   </style>
 </head>
 <body>
   <div class="wrap" role="main">
 
-    <!-- ========== HEADER ========== -->
+    <!-- HEADER -->
     <header class="header" aria-label="Profile header">
-      <!-- LEFT: PROFILE -->
       <div class="profile">
         <div class="avatar" role="img" aria-label="Profile photo">
-          <!-- Replace with your professional image file named profile.jpg -->
           <img src="https://via.placeholder.com/900x900.png?text=Profile+Photo" alt="Profile photo — Shinde Anand Anil">
         </div>
-
         <div class="name">SHINDE ANAND ANIL</div>
         <div class="role">Manager, Powertrain — Engineering & Development</div>
-
         <div class="meta">
           <div>Mobile: <strong>8669414519</strong></div>
           <div>Hadapsar, Pune - 28</div>
           <div>Email: <a href="mailto:aashinde_be80@rediffmail.com" style="color:var(--gold-mid);text-decoration:none">aashinde_be80@rediffmail.com</a></div>
         </div>
-
         <div class="links" role="navigation" aria-label="Profile links">
           <a class="btn btn-primary" href="resume.pdf" download aria-label="Download resume">Download Resume</a>
           <a class="btn btn-ghost" href="https://www.linkedin.com/in/anand-shinde-07aa45308" target="_blank" rel="noopener" aria-label="Open LinkedIn profile">LinkedIn</a>
         </div>
       </div>
-
-      <!-- RIGHT: HEADLINE -->
       <div class="head-right">
         <div class="title">Experienced Powertrain Manager — <span class="highlight">19+ Years</span></div>
-
         <div class="typing-wrap" aria-hidden="false">
           <div class="typing" id="typed"></div>
           <div class="typing-caret" aria-hidden="true"></div>
         </div>
-
         <div class="summary">
           Objective: To achieve best possible success through hard work & continuous update my personality by learning through experience.
         </div>
-
         <div class="muted" style="font-size:14px">
           Total Experience: <strong>19 Years 05 months (In Design)</strong><br>
           Current Role: Manager, Powertrain (Engineering & Development Department)
@@ -231,18 +214,13 @@
       </div>
     </header>
 
-    <!-- ========== MAIN GRID ========== -->
+    <!-- MAIN GRID -->
     <div class="main-grid" role="region" aria-label="Main content">
-
-      <!-- LEFT: full resume content -->
       <div>
-
         <!-- PROFESSIONAL EXPERIENCE -->
         <section class="card" aria-labelledby="exp">
           <h2 id="exp">Professional Experience</h2>
-
           <div class="exp-list" role="list">
-
             <!-- CHROPYNSKA -->
             <article class="exp" role="listitem" aria-labelledby="chropy">
               <div class="head">
@@ -253,7 +231,6 @@
                 </div>
                 <div class="duration muted">Total Exp. 19 Years 05 months (In Design)</div>
               </div>
-
               <details>
                 <summary>View full details</summary>
                 <div class="verbatim" style="margin-top:10px">
@@ -275,7 +252,6 @@ Familiar with Solid Edge V20, Catia V5R19,
                 </div>
                 <div class="duration muted">Role & Projects</div>
               </div>
-
               <details>
                 <summary>View full details</summary>
                 <div class="verbatim" style="margin-top:10px">
@@ -303,7 +279,6 @@ Role Design concept & layout for robotic washer (automatic) as per customer RFQ.
                 </div>
                 <div class="duration muted">Role & Responsibilities</div>
               </div>
-
               <details>
                 <summary>View full details</summary>
                 <div class="verbatim" style="margin-top:10px">
@@ -333,7 +308,6 @@ Extra Activity: To save project cost build inhouse different air nozzles for dry
                 </div>
                 <div class="duration muted">Role & Projects</div>
               </div>
-
               <details>
                 <summary>View full details</summary>
                 <div class="verbatim" style="margin-top:10px">
@@ -356,7 +330,6 @@ Role. Prepare layout & BOM for proto-type project. Prepare specification sheet f
                 </div>
                 <div class="duration muted">Role & Projects</div>
               </div>
-
               <details>
                 <summary>View full details</summary>
                 <div class="verbatim" style="margin-top:10px">
@@ -389,8 +362,7 @@ IS Standards for design various components & testing, ASME & TEMA code for heat 
                 </div>
               </details>
             </article>
-
-          </div><!-- exp-list -->
+          </div>
         </section>
 
         <!-- BRIEF WORK AREA & MAJOR PROJECTS -->
@@ -416,12 +388,10 @@ MAJOR PROJECTS:
 	High Pressure Air Compressors, Cooling by Turboexpander by compressed air.  
           </div>
         </section>
-
       </div>
 
-      <!-- RIGHT: sidebar -->
+      <!-- SIDEBAR -->
       <aside class="side" aria-label="Sidebar">
-
         <div class="mini side-stack">
           <div class="label">PRESENT ROLE & CAD SOFTWARE'S</div>
           <div class="verbatim">
@@ -469,27 +439,21 @@ Hadapsar, Pune - 28
 Email: aashinde_be80@rediffmail.com
           </div>
         </div>
-
       </aside>
-
-    </div> <!-- main-grid -->
+    </div>
 
     <footer>
       © <span id="year"></span> SHINDE ANAND ANIL — All rights reserved.
     </footer>
 
-    <!-- Floating resume button for mobile -->
     <div class="floating" aria-hidden="false">
       <a class="btn btn-primary" href="resume.pdf" download aria-label="Download resume">Resume</a>
     </div>
-
-  </div> <!-- wrap -->
+  </div>
 
   <script>
-    // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    /* ================= TYPING ANIMATION (ULTRA DARK GOLD) ================= */
     (function(){
       const phrases = [
         "Manager — Powertrain Engineering & Development",
@@ -518,13 +482,11 @@ Email: aashinde_be80@rediffmail.com
             p = (p+1) % phrases.length;
           }
         }
-        // Slightly faster type, visible and premium
         setTimeout(step, 36 + Math.random()*36);
       }
       step();
     })();
 
-    /* Keyboard accessibility for <details> toggles */
     document.querySelectorAll('summary').forEach(s=>{
       s.addEventListener('keydown', (e)=>{
         if(e.key === 'Enter' || e.key === ' '){
@@ -535,5 +497,7 @@ Email: aashinde_be80@rediffmail.com
       });
     });
   </script>
+ 
+
 </body>
 </html>
