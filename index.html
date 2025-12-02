@@ -15,9 +15,9 @@
       --panel: #ffffff;
       --muted: #6b7280;
       --text: #071228;
-      --gold-dark: #7a5a00;
-      --gold-mid: #b88900;
-      --gold-light: #d8b457;
+      --gold-dark:#d49b00;
+      --gold-mid:#ffcc33;
+      --gold-light:#ffe680;
       --glass: rgba(7,18,40,0.03);
       --soft-gold-shadow: rgba(184,137,0,0.12);
       --shadow: 0 16px 50px rgba(12,22,60,0.07);
@@ -142,8 +142,8 @@
     }
     .exp:hover{transform:translateY(-8px);box-shadow:0 28px 60px rgba(12,22,60,0.10)}
     .exp .head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
-    .company{font-weight:700}
-    .duration{color:var(--muted);font-size:13px}
+    .company{font-weight:700;background:linear-gradient(90deg,#004aad,#00b7ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .duration{font-size:13px;background:linear-gradient(90deg,#ff4d4d,#ff9966);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
     details{margin-top:10px}
     summary{cursor:pointer;font-weight:700;color:var(--gold-dark);list-style:none}
     summary::-webkit-details-marker{display:none}
@@ -155,7 +155,7 @@
       padding:14px;border-radius:12px;background:linear-gradient(180deg,#fff,#fff);
       border:1px solid rgba(7,18,40,0.03);box-shadow:0 12px 30px rgba(12,22,60,0.04);
     }
-    .label{font-weight:700;color:var(--text);margin-bottom:8px}
+    .label{font-weight:700;background:linear-gradient(90deg,#8e2de2,#4a00e0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;}
     .skills{display:flex;flex-wrap:wrap;gap:8px}
     .skill-pill{background:linear-gradient(90deg,#fff,#fff);padding:8px 10px;border-radius:999px;border:1px solid rgba(7,18,40,0.03);font-weight:600;color:var(--text);font-size:13px}
 
@@ -440,7 +440,7 @@ Email: aashinde_be80@rediffmail.com
     </div>
 
     <footer>
-      © <span id="year"></span> SHINDE ANAND ANIL — All rights reserved.
+      © <span id="year"></span> SHINDE ANAND  — All rights reserved.
     </footer>
 
     <div class="floating" aria-hidden="false">
