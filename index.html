@@ -44,7 +44,7 @@
     /* ========== HEADER (Left profile + Right content) ========== */
     header.header{
       display:grid;
-      grid-template-columns: 300px 1fr;
+      grid-template-columns: 1fr; /* Single column */
       gap:28px;
       align-items:start;
       background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.99));
@@ -124,8 +124,7 @@
     .summary{color:var(--muted);font-size:14px;padding-bottom:10px;border-bottom:1px solid rgba(7,18,40,0.04);margin-bottom:14px}
 
     /* ========== MAIN GRID ========== */
-    .main-grid{display:grid;grid-template-columns:2fr 1fr;gap:22px;margin-top:22px}
-    @media (max-width:1000px){ header.header{grid-template-columns:1fr} .main-grid{grid-template-columns:1fr} .avatar{width:180px;height:180px} }
+    .main-grid{display:grid;grid-template-columns:1fr;gap:22px;margin-top:22px}
 
     /* ========== SECTION CARD ========== */
     section.card{
@@ -169,7 +168,7 @@
     }
     .contact-box a{color:var(--gold-mid);font-weight:700;text-decoration:none}
 
-    .floating{position:fixed;right:18px;bottom:18px;z-index:999;display:none}
+    .floating{position:fixed;right:18px;bottom:18px;z-index:999;display:block}
     @media (max-width:720px){ .floating{display:block} }
 
     footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px;padding:6px}
@@ -213,7 +212,7 @@
         </div>
       </div>
     </header>
-
+    
     <!-- MAIN GRID -->
     <div class="main-grid" role="region" aria-label="Main content">
       <div>
