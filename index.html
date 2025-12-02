@@ -3,276 +3,465 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Anand Shinde — Powertrain • Automation • Mechanical Design</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>SHINDE ANAND ANIL — Professional Resume</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- THEME: Minimal White + Gold (Option B header) ---------- */
+    :root{
+      --bg:#f7f7f8;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --text:#071228;
+      --gold-1:#b77b00;
+      --gold-2:#ffc85b;
+      --glass: rgba(7,18,40,0.03);
+      --shadow: 0 10px 30px rgba(12,22,60,0.06);
+      --radius:14px;
+      --maxw:1200px;
+    }
+
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg,#fbfbfc,#f6f6f7);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:22px;
+    }
+
+    /* Page wrapper */
+    .wrap{max-width:var(--maxw);margin:18px auto;padding:18px}
+
+    /* Header layout: Option B (left profile, right content) */
+    header.header{
+      display:grid;
+      grid-template-columns: 260px 1fr;
+      gap:22px;
+      align-items:start;
+      background:var(--card);
+      padding:18px;border-radius:var(--radius);
+      box-shadow:var(--shadow);border:1px solid rgba(7,18,40,0.03);
+    }
+
+    /* Profile card */
+    .profile{
+      display:flex;flex-direction:column;align-items:center;gap:12px;padding:12px;
+    }
+    .avatar{
+      width:200px;height:200px;border-radius:14px;overflow:hidden;border:6px solid var(--gold-1);
+      box-shadow:0 10px 30px rgba(183,123,0,0.12);background:#fff;transition:transform .45s;
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .avatar:hover{transform:translateY(-6px) rotateY(6deg)}
+
+    .name{font-family:Poppins,Inter;font-weight:700;font-size:20px;color:var(--text);text-align:center}
+    .sub{color:var(--muted);font-size:13px;text-align:center}
+    .meta{display:flex;flex-direction:column;gap:6px;margin-top:6px;font-size:13px;color:var(--muted);text-align:center}
+
+    .links{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap;justify-content:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid rgba(7,18,40,0.05);color:var(--text);background:transparent;transition:all .2s}
+    .btn-primary{background:linear-gradient(90deg,var(--gold-1),var(--gold-2));color:#071217;border:none;box-shadow:0 8px 20px rgba(183,123,0,0.12)}
+    .btn-ghost{background:transparent}
+    .btn:hover{transform:translateY(-3px)}
+
+    /* Right column header details */
+    .head-right{padding:6px 6px 6px 0}
+    .title{font-size:22px;font-weight:700;font-family:Poppins,Inter;margin-bottom:6px}
+    .title .highlight{background:linear-gradient(90deg,var(--gold-1),var(--gold-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .typing{color:var(--gold-2);font-weight:700;margin-bottom:12px;min-height:22px}
+
+    .summary{color:var(--muted);font-size:14px;padding-bottom:8px;border-bottom:1px solid rgba(7,18,40,0.03);margin-bottom:12px}
+
+    /* Main layout: content below header */
+    .main-grid{display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-top:20px}
+    @media (max-width:1000px){ header.header{grid-template-columns:1fr;} .main-grid{grid-template-columns:1fr} .avatar{width:160px;height:160px} }
+
+    /* Section card */
+    section.card{
+      background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(7,18,40,0.03);box-shadow:var(--shadow)
+    }
+    section.card h2{font-size:16px;margin-bottom:10px;color:transparent;background:linear-gradient(90deg,var(--gold-1),var(--gold-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+
+    /* Experience list */
+    .exp-list{display:flex;flex-direction:column;gap:12px}
+    .exp{
+      padding:14px;border-radius:10px;background:var(--glass);border:1px solid rgba(7,18,40,0.02);
+      transition: transform .35s, box-shadow .35s;
+    }
+    .exp:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(12,22,60,0.06)}
+    .exp .head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+    .company{font-weight:700}
+    .duration{color:var(--muted);font-size:13px}
+
+    details{margin-top:10px}
+    summary{cursor:pointer;font-weight:700;color:var(--gold-1);list-style:none}
+    summary::-webkit-details-marker{display:none}
+
+    .verbatim{white-space:pre-wrap;color:var(--muted);font-size:14px;background:transparent;padding:8px;border-radius:8px}
+
+    /* Right column (sidebar) */
+    .side{display:flex;flex-direction:column;gap:12px}
+    .side .mini{padding:12px;border-radius:10px;background:var(--card);border:1px solid rgba(7,18,40,0.03);box-shadow:var(--shadow)}
+    .label{font-weight:700;color:var(--text);margin-bottom:8px}
+
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .skill-pill{background:linear-gradient(90deg,#fff,#fff);padding:8px 10px;border-radius:999px;border:1px solid rgba(7,18,40,0.03);font-weight:600;color:var(--text);font-size:13px}
+
+    /* Floating download button for mobile */
+    .floating{
+      position:fixed;right:20px;bottom:20px;z-index:999;
+    }
+
+    /* Footer */
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px;padding:6px}
+
+    /* Accessibility focus */
+    a:focus,button:focus,summary:focus{outline:3px solid rgba(183,123,0,0.18);outline-offset:3px}
+  </style>
 </head>
-
-
 <body>
-  <header class="site-header premium-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">
-          <!-- simple svg logo -->
-          <svg width="44" height="44" viewBox="0 0 100 100" role="img">
-            <rect x="0" y="0" width="100" height="100" rx="18" fill="#042f2e"/>
-            <text x="50" y="60" font-family="Segoe UI, Roboto, Arial" font-size="42" fill="#a6fff0" text-anchor="middle" font-weight="700">AS</text>
-          </svg>
+  <div class="wrap" role="main">
+
+    <!-- HEADER -->
+    <header class="header" aria-label="Profile header">
+      <!-- Left: Profile card -->
+      <div class="profile" aria-hidden="false">
+        <div class="avatar" role="img" aria-label="Profile photo">
+          <!-- Replace src with profile.jpg -->
+          <img src="https://via.placeholder.com/600x600.png?text=Profile+Photo" alt="Profile photo — Shinde Anand Anil">
         </div>
-        <div class="brand-text">
-          <h1>Anand Shinde</h1>
-          <p class="tagline">Powertrain • Automation • Mechanical Design</p>
+        <div class="name">SHINDE ANAND ANIL</div>
+        <div class="sub">Manager, Powertrain — Engineering & Development</div>
+        <div class="meta">
+          <div>Mobile: <strong>8669414519</strong></div>
+          <div>Hadapsar, Pune - 28</div>
+          <div>Email: <a href="mailto:aashinde_be80@rediffmail.com" style="color:var(--gold-2);text-decoration:none">aashinde_be80@rediffmail.com</a></div>
+        </div>
+
+        <div class="links" role="navigation" aria-label="Profile links">
+          <a class="btn btn-primary" href="resume.pdf" download aria-label="Download resume">Download Resume</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/anand-shinde-07aa45308" target="_blank" rel="noopener" aria-label="Open LinkedIn profile">LinkedIn</a>
         </div>
       </div>
 
-      <nav class="nav premium-nav" id="nav">
-        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">
-          ☰
-        </button>
-        <ul id="navList" class="nav-list">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+      <!-- Right: Headline and summary -->
+      <div class="head-right">
+        <div class="title">Experienced Powertrain Manager — <span class="highlight">19+ Years</span></div>
+        <div class="typing" id="typed" aria-live="polite"></div>
+        <div class="summary">
+          Objective: To achieve best possible success through hard work & continuous update my personality by learning through experience.
+        </div>
+
+        <div class="muted" style="font-size:14px">
+          Total Experience: <strong>19 Years 05 months (In Design)</strong><br>
+          Current Role: Manager, Powertrain (Engineering & Development Department)
+        </div>
+
+      </div>
+    </header>
+
+    <!-- MAIN GRID -->
+    <div class="main-grid" role="region" aria-label="Main content">
+
+      <!-- LEFT: Full resume content -->
+      <div>
+
+        <!-- PROFESSIONAL EXPERIENCE -->
+        <section class="card" aria-labelledby="exp">
+          <h2 id="exp">Professional Experience</h2>
+
+          <div class="exp-list" role="list">
+
+            <!-- CHROPYNSKA -->
+            <article class="exp" role="listitem" aria-labelledby="chropy">
+              <div class="head">
+                <div>
+                  <div class="company" id="chropy">Company: CHROPYNSKA INDIA PVT. LTD.</div>
+                  <div class="duration">Duration: April 2023 - till today.</div>
+                  <div class="muted" style="margin-top:6px">Job Profile: Manager, Powertrain (Engineering & Development Department)</div>
+                </div>
+                <div class="duration muted">Total Exp. 19 Years 05 months (In Design)</div>
+              </div>
+
+              <details>
+                <summary>View full details</summary>
+                <div class="verbatim" style="margin-top:10px">
+PRESENT ROLE: Individual handling of Powertrain projects, Work for proposals & cost estimation.
+Design machines as per industry 4.0 requirement & industry safety requirement. Lead design team for product development & design release. Build suppliers for product improvement. Interaction with third party safety audit to fulfil safety requirements for machine. Support installation team to smooth handover the product to the customer. Customer: TATA Cummins, Phaltan, Cummins India Limited, Cummins Jamshedpur, PSA, Daimler (Mercedes-Benz Group). 
+CAD SOFTWARE’S: Auto – Cad 2000 - 2018, Auto desk Inventor 2018, & UG NX11.0.
+Familiar with Solid Edge V20, Catia V5R19,
+                </div>
+              </details>
+            </article>
+
+            <!-- Valiant-TMS -->
+            <article class="exp" role="listitem" aria-labelledby="valiant">
+              <div class="head">
+                <div>
+                  <div class="company" id="valiant">Company: Valiant-TMS Systems Pvt. Ltd. Pune, Maharashtra, India.</div>
+                  <div class="duration">Duration: November 2012 to March 2023. (10.4 Years)</div>
+                  <div class="muted" style="margin-top:6px">Job Profile: Manager, Powertrain (Engineering & Development Department)</div>
+                </div>
+                <div class="duration muted">Role & Projects</div>
+              </div>
+
+              <details>
+                <summary>View full details</summary>
+                <div class="verbatim" style="margin-top:10px">
+A] Valiant-TMS Systems Pvt. Ltd.
+Role & Projects: 
+1. Design & Install Robotic Deburring stations & high-pressure Robotic washers for TATA Cummins Phaltan.
+Role Develop suppliers, Project costing, Concept design, Design approval, Assembly support & trials, Installation.
+2. Automation for Automobile sector: PRB conveyor & lifter for PSA group, PRB conveyors for main line of Mercedes-Benz for five countries.
+3. Design & Development of Robotic Battery cells 
+Role Design welding fixtures for various sub-assembly of battery panel as per customer inputs. Design leak-testing machine for cross members of battery unit. Work on cycle time to achieve production rate.
+4. Design & develop Industrial washers, Conveyors, Grippers (EoAT), Fixtures, Vacuum bell, Cooling. 
+   Tunnel.
+Role Design concept & layout for robotic washer (automatic) as per customer RFQ. Design fixtures, EoAT, piping for washing purposes & different tools related to washer. Guide the team members to solve the query. Co-ordinate with parent company Valiant TMS Canada. Checking of 2D detailing upload to Canada office for manufacturing. Attend the conference meeting for new line-up upload by Canada office. Guide the team for new concepts or solve queries during design & detailing. Customer GM, Alison, Chrysler, Ford, Hiram, Hirata, and United Technologies Corporation (UTC). Work on semi-automatic & manual washers. Work on leak testing machine, SPM with robot & Cobot. Coordinate with customer & North America, Canada team members.
+                </div>
+              </details>
+            </article>
+
+            <!-- Zippel -->
+            <article class="exp" role="listitem" aria-labelledby="zippel">
+              <div class="head">
+                <div>
+                  <div class="company" id="zippel">Company: Zippel GmbH & Co. Pvt. Ltd, Pune, Maharashtra.</div>
+                  <div class="duration">Duration: June 2010 to Nov.2012 (2.5 Years)</div>
+                  <div class="muted" style="margin-top:6px">Job Profile: Sr. Design Engineer (Research & Development Department)</div>
+                </div>
+                <div class="duration muted">Role & Responsibilities</div>
+              </div>
+
+              <details>
+                <summary>View full details</summary>
+                <div class="verbatim" style="margin-top:10px">
+B] Master Zippel Ind. Pvt. Ltd.
+1. Design & develop industrial washers. 
+Role. Prepare G.A. & P & ID as per customer PO. Selection of system pumps, nozzles, sensors, pneumatic cylinders, valves, gearbox & filtration system. Design the pneumatic circuit & co-ordinate with controls department. Finalized bought-out items as per P.O. offer & our standard make. Design 3D model in Solid Edge V20. Discuss the logic of machine with control department for PLC programming. Decide the safety interlocks required for the safety of operator & product. Check manufacturing drawings. List out the problem during assembly & provide solution for it. Conduct trials to prove the machine. 
+2. Design conveyors & turn table – Hands on power & free, powered, gravitational, overhang, chain, roller.  
+conveyor, stop & go, pick & place, lift & carry up-down machines.
+Role. Design conveyor based on type of component/application of conveyor. Design role selection of motor as per torque & gearbox as per reduction speed, sprockets etc. Select material for handling system. 
+3. Design Fixtures for components like cylinder head, cylinder block & crank shaft for washing purposes. 
+4. Design work on sheet metals.
+Role. Develop & design enclosure for industrial washers. Work for nesting of all cutting parts. Selection of foams as per applications. 2D drawing checking.
+5. Design & Develop filters for Industrial washers. Design shell type high- & low-pressure filter. Filters with 
+Self-cleaning arrangement. Design & develop magnetic filter for metal chips. Design & develop by re-engineering disc / belt type oil removal filters. Design & develop Paper band filter & Up-flow filter for Industrial washer’s application. 
+Extra Activity: To save project cost build inhouse different air nozzles for drying system, Develop magnetic chip removal filter for industrial washers.
+                </div>
+              </details>
+            </article>
+
+            <!-- Filtration Technik -->
+            <article class="exp" role="listitem" aria-labelledby="filtration">
+              <div class="head">
+                <div>
+                  <div class="company" id="filtration">Company: Filtration Technik India, Pune, Maharashtra.</div>
+                  <div class="duration">Duration: April 2009 to June 2010 (1.2 Years)</div>
+                  <div class="muted" style="margin-top:6px">Job Profile: Sr. Project Engineer (Research & Development Department)</div>
+                </div>
+                <div class="duration muted">Role & Projects</div>
+              </div>
+
+              <details>
+                <summary>View full details</summary>
+                <div class="verbatim" style="margin-top:10px">
+C] Filtration Technik, India.
+1. Design high-pressure Piping. 
+Role. Design high-pressure piping for air/gas for product filters & dryers. Conduct on-site trials for new proto-type filters. Conduct trials on air dryers for high & low-pressure air.   
+2. Prepare air-piping layout for customer approval also prepare BOM & quote for new orders. Visit customers. 
+Role. Prepare layout & BOM for proto-type project. Prepare specification sheet for bought-out items. Conduct meetings with suppliers for new development, conduct trials as per standard. Develop new venders as per the policy of the company to reduce costs & to avoid monopoly of suppliers.
+                </div>
+              </details>
+            </article>
+
+            <!-- Kirloskar Pneumatic -->
+            <article class="exp" role="listitem" aria-labelledby="kirloskar">
+              <div class="head">
+                <div>
+                  <div class="company" id="kirloskar">Company: Kirloskar Pneumatic Co. Ltd, Pune, Maharashtra.</div>
+                  <div class="duration">Duration: 8 Aug. 2005 to March 2009 (3.7 Years)</div>
+                  <div class="muted" style="margin-top:6px">Job Profile: Sr. Design Engineer (Research & Development Department)</div>
+                </div>
+                <div class="duration muted">Role & Projects</div>
+              </div>
+
+              <details>
+                <summary>View full details</summary>
+                <div class="verbatim" style="margin-top:10px">
+D] Kirloskar Pneumatic Co. Ltd.
+1. Design & engineering of reciprocating compressors for air & gas.
+Role. Prepare layout, P & ID for compressor for customer approval. Selections of cylinder combination for build require pressure & CFM. Selection of drive, valve, heat exchanger. Design air piping for compressors. Release BOM as per customer requirement. Conduct trials for CFM & pressure. 
+2. Design & testing Heat Exchanger (Cooler).
+Role.	Prepare specification sheet of heat exchanger for material required heat exchanger area available. Inlet Temp. Outlet Temp. Required. Discuss the specification with approved supplier for manufacturing. All designs with reference to ASME code & space available. After manufacturing approval & check test certificates as per standard. Conduct in-house trials for dispatch.
+3.	Sheet metal & structure design.
+Role. Design enclosed canopy for screw compressor. Develop 3D model in inventor for mounting details & opening, then prepare 2D detailed drawings with laser cutting drawing details. Testing of canopy for noise level reduction & vibration. 
+PROJECTS:
+Reciprocating Compressors: 
+1. Engineering & development of new products related mainly to Air & Gas compressors.
+2. Development of existing products as per customer requirements.
+3. Solid modeling of component in Autodesk Inventor Professional 10 & prepare manufacturing drawing in Auto-CAD 2000 & 2007. 
+Screw Compressors: 
+Design & Develop screw compressor for oil, dust & moisture free air for special application. Conduct various trials in-house & site for customer approval.
+Special Projects: 
+1.	Service Air Trolley (SAT-650, SAT-300, SAT-800 & SAT-800E): Develop mobile air-cooling trolley for Sukhoi Aircraft application (Mobile AC for Defence). Detailing & Trials for new engine in house.
+2.	Nitrogen Generating Station: Mobile Nitrogen generating, storage and transportation station for Sukhoi Aircraft application. This is the unique product that involves, on site generation of Nitrogen, boosting to 350 bars, and drying to ultra-low dew point as low as (-) 95 °C (Mobile unit for Defence).
+3.	Oxygen Charging Delivery Vehicle: Oxygen charging vehicle for Aircraft application & Medical Purpose. Up to pressure 350 Bars. Role Detailing of parts & help in R & D assembly shop.
+4.	M.A.C.V. & KG5H (High pressure compressors) Compressor builds pressure 750-850 Kg/cm2 pressure. Use mainly for missile lunching & other defence application. Work for R & D assembly shop.
+5.	D.M.D.E. (High Pressure 500 bar) Detailing high pressure compressor. Output pressure is 400 bar. Special 
+design for defence application. 
+Role.	Modeling 3D & 2D detailing of compressor prepare BOM & submit for release.
+Client: - H.A.L., Indian Railway, Cement, Textiles, Paper, Chemical, Automobile, food, Construction industries.
+Standardisation of various components to reduce Verity (Inventory) to save assembly time, save cost of product before & after sale.
+Knowledge of various:  
+IS Standards for design various components & testing, ASME & TEMA code for heat exchanger design, API Standards for various valve design, also refer various Standards for manufacturing & coating. Also have of various International & Military Standards knowledge.
+                </div>
+              </details>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- BRIEF WORK AREA & MAJOR PROJECTS -->
+        <section class="card" aria-labelledby="workarea">
+          <h2 id="workarea">BRIEF WORK AREA & MAJOR PROJECTS</h2>
+          <div class="verbatim">
+BRIEF WORK AREA:
+	Robotic Automation solution for engine assembly. 
+	Robotic deburring & washing systems for engine components. 
+	Handling systems with Robot & Cobot as per requirement.   
+	Interaction with customers with new RFQ’s with cost effective solutions.
+	Design machines as per Industry 4.0 requirement & industry safety standards.   
+	Work for international customers like GM, FORD, Canoo, Nemak, Honda USA, Caterpillar,   
+    Chrysler, Cummins USA, etc.
+	Handle international customers. Work with parent company Valiant Machine Tools Canada.
+	Additional responsibility – Work for proposal department for powertrain projects, Work for vendor development department (Purchase department) & project management for powertrain projects.
+
+MAJOR PROJECTS: 
+	Deburring Systems, Industrial washers.
+	Robot & Cobot Handling systems, Conveyors, Gantry, Work for different AGV’s.
+	Automation & inspection stations.
+	BIW fixturing, BIW line conveyors for underbody, Tackles for closer line.
+	High Pressure Air Compressors, Cooling by Turboexpander by compressed air.  
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT: sidebar -->
+      <aside class="side" aria-label="Sidebar">
+
+        <div class="mini side-stack">
+          <div class="label">PRESENT ROLE & CAD SOFTWARE'S</div>
+          <div class="verbatim">
+PRESENT ROLE: Individual handling of Powertrain projects, Work for proposals & cost estimation.
+Design machines as per industry 4.0 requirement & industry safety requirement. Lead design team for product development & design release. Build suppliers for product improvement. Interaction with third party safety audit to fulfil safety requirements for machine. Support installation team to smooth handover the product to the customer. Customer: TATA Cummins, Phaltan, Cummins India Limited, Cummins Jamshedpur, PSA, Daimler (Mercedes-Benz Group).
+CAD SOFTWARE’S: Auto – Cad 2000 - 2018, Auto desk Inventor 2018, & UG NX11.0.
+Familiar with Solid Edge V20, Catia V5R19,
+          </div>
+        </div>
+
+        <div class="mini side-stack">
+          <div class="label">SKILLS / STANDARDS / TOOLS</div>
+          <div class="verbatim">
+Knowledge of various:  
+IS Standards for design various components & testing, ASME & TEMA code for heat exchanger design, API Standards for various valve design, also refer various Standards for manufacturing & coating. Also have of various International & Military Standards knowledge.
+          </div>
+        </div>
+
+        <div class="mini side-stack">
+          <div class="label">Education</div>
+          <div class="verbatim">
+Pass B.E. (Mechanical) in 2005 from B.V.C.O.E. Pune.
+Pass H.S.C. from R.B.N.B. College Srirampur.
+Pass S.S.C. from K.J.S. High School, Srirampur.
+B. E. Project:  Automatic Chalk Making M/C 
+Description:  Design of Geneva Disc, Geneva Cam, Selection of 1. Chain 2. Motor & 3. Gear Box.
+Seminar: Flight Data Recorder.
+Extra Activities: Table Tennis player, Swimming Champion
+          </div>
+        </div>
+
+        <div class="mini side-stack">
+          <div class="label">Personal Profile & Contact</div>
+          <div class="verbatim">
+Father’s Name: Dr. Anil Mahadeorao Shinde
+Date of Birth: 27th Feb. 1980
+Gender: Male
+Nationality: Indian
+Marital Status: Married
+Languages Known: English, Hindi, and Marathi.
+
+Contact:
+Mobile: 8669414519
+Hadapsar, Pune - 28
+Email: aashinde_be80@rediffmail.com
+          </div>
+        </div>
+
+      </aside>
+
+    </div> <!-- main-grid -->
+
+    <footer>
+      © <span id="year"></span> SHINDE ANAND ANIL — All rights reserved.
+    </footer>
+
+    <!-- Floating resume button for quick access (mobile friendly) -->
+    <div class="floating" aria-hidden="false">
+      <a class="btn btn-primary" href="resume.pdf" download aria-label="Download resume">Resume</a>
     </div>
-  </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-left">
-          <!-- Title (lowered as requested) -->
-          <h2>Powertrain &amp; Automation Leader</h2>
+  </div> <!-- wrap -->
 
-          <!-- Description -->
-          <p class="lead">
-            19+ years designing robotic automation, robotic deburring &amp; washers, handling systems (robots &amp; cobots), conveyors, and high-pressure compressor systems.
-          </p>
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-          <!-- CTA row (Download / Hire / LinkedIn) -->
-          <div class="cta-row">
-            <a class="btn primary" id="downloadResume" href="/mnt/data/Anand_Shinde_03_02_2025.docx" target="_blank" rel="noopener">
-              <svg class="icon" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M5 20h14v-2H5v2zM12 2v10l3-3 1.4 1.4L12 16 7.6 10.4 9 9l3 3V2h0z"/></svg>
-              Download Resume
-            </a>
+    /* Typing animation */
+    (function(){
+      const phrases = [
+        "Manager — Powertrain Engineering & Development",
+        "Industrial Automation • Robotic Systems • Powertrain",
+        "19 Years 05 Months experience in Design & R&D",
+        "Global Projects • Clients: TATA Cummins, Mercedes-Benz, GM, Ford, Cummins USA"
+      ];
+      const el = document.getElementById('typed');
+      let p = 0, i = 0, forward = true;
 
-            <a class="btn outline" href="#contact">Hire / Contact</a>
+      function step(){
+        const full = phrases[p];
+        if(forward){
+          i++;
+          el.textContent = full.slice(0,i);
+          if(i >= full.length){ forward = false; setTimeout(step,1500); return; }
+        } else {
+          i--;
+          el.textContent = full.slice(0,i);
+          if(i <= 0){ forward = true; p = (p+1) % phrases.length; }
+        }
+        setTimeout(step, 40 + Math.random()*40);
+      }
+      step();
+    })();
 
-            <a class="btn linkedin" href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener">
-              <!-- LinkedIn icon (simple) -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9.75 14.5h-2.5v-6h2.5v6zM7.5 9.75c-.8 0-1.45-.65-1.45-1.45C6.05 7.5 6.7 6.85 7.5 6.85c.8 0 1.45.65 1.45 1.45 0 .8-.65 1.45-1.45 1.45zM18 17.5h-2.5v-2.9c0-.7 0-1.6-.98-1.6-.98 0-1.13.77-1.13 1.55v2.95H10.5v-6h2.4v.82h.03c.33-.62 1.14-1.28 2.35-1.28 2.51 0 2.97 1.65 2.97 3.8v3.66z"/></svg>
-              LinkedIn
-            </a>
-          </div>
-
-          <!-- small contact quick links -->
-          <ul class="contact-mini">
-            <li><strong>Mobile:</strong> <a href="tel:+918669414519">+91 86694 14519</a></li>
-            <li><strong>Email:</strong> <a href="mailto:aashinde_be80@rediffmail.com">aashinde_be80@rediffmail.com</a></li>
-            <li><strong>Location:</strong> Hadapsar, Pune, India</li>
-          </ul>
-        </div>
-
-        <div class="hero-right">
-          <div class="card summary-card">
-            <h3>Quick Profile</h3>
-            <p><strong class="gold">Current:</strong> Manager, Powertrain — CHROPYNSKA INDIA PVT. LTD. (Apr 2023 – present)</p>
-            <p><strong>Total Experience:</strong> 19 years 5 months (Design &amp; R&amp;D)</p>
-            <p><strong>Core areas:</strong> Robotic automation, industrial washers, conveyors, handling systems, compressors, project proposals &amp; vendor development.</p>
-            <p><strong>CAD tools:</strong> AutoCAD, Inventor, UG NX, Solid Edge, Catia V5R19.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="section about">
-      <div class="container">
-        <h2>About</h2>
-
-        <div class="about-grid">
-          <div>
-            <h3>Objective</h3>
-            <p>To achieve best possible success through hard work &amp; continuous learning, contributing engineering experience to robust, cost-effective automation and powertrain solutions.</p>
-
-            <h3>Present Role</h3>
-            <p>Lead powertrain project design, proposals, cost estimation, supplier development and product release. Ensure safety &amp; Industry 4.0 requirements, coordinate installations and customer handover.</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section">
-      <div class="container">
-        <h2>Experience</h2>
-
-        <div class="timeline" id="timelineShort">
-          <!-- Visible items by default -->
-          <article class="timeline-item">
-            <h3>CHROPYNSKA INDIA PVT. LTD.</h3>
-            <p class="muted">Manager, Powertrain — April 2023 to present</p>
-            <ul>
-              <li>Lead powertrain engineering &amp; development projects.</li>
-              <li>Project cost proposals, supplier development, and safety audits.</li>
-            </ul>
-          </article>
-
-          <article class="timeline-item">
-            <h3>Valiant-TMS Systems Pvt. Ltd.</h3>
-            <p class="muted">Manager, Powertrain — Nov 2012 to Mar 2023</p>
-            <ul>
-              <li>Designed robotic deburring stations &amp; high-pressure robotic washers.</li>
-              <li>Conveyor systems for Mercedes-Benz and PSA Group.</li>
-              <li>Fixtures, leak-testing machines, robotic handling tooling.</li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="timeline" id="timelineMore" style="display:none;">
-          <!-- Hidden until user clicks "Show More" -->
-          <article class="timeline-item">
-            <h3>Zippel GmbH &amp; Co. Pvt. Ltd.</h3>
-            <p class="muted">Sr. Design Engineer — Jun 2010 to Nov 2012</p>
-            <ul>
-              <li>Industrial washers, pneumatic circuits, P&amp;ID, safety interlocks.</li>
-            </ul>
-          </article>
-
-          <article class="timeline-item">
-            <h3>Filtration Technik India</h3>
-            <p class="muted">Sr. Project Engineer — Apr 2009 to Jun 2010</p>
-            <ul>
-              <li>Piping, filters, prototypes, BOM development.</li>
-            </ul>
-          </article>
-
-          <article class="timeline-item">
-            <h3>Kirloskar Pneumatic Co. Ltd.</h3>
-            <p class="muted">Sr. Design Engineer — Aug 2005 to Mar 2009</p>
-            <ul>
-              <li>Reciprocating &amp; screw compressor design and cooling systems.</li>
-            </ul>
-          </article>
-
-          <!-- If your doc has additional companies, paste them here exactly as in the doc (or send the doc; I can add them) -->
-        </div>
-
-        <div style="margin-top:14px;">
-          <button id="showMoreBtn" class="btn outline">Show More ↓</button>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-      <div class="container">
-        <h2>Major Projects &amp; Highlights</h2>
-        <div class="cards-grid">
-          <div class="card"><h4>Robotic Deburring &amp; Washers</h4><p>Concept to installation for TATA Cummins &amp; OEMs.</p></div>
-          <div class="card"><h4>Handling Systems (Robots &amp; Cobots)</h4><p>EoAT, conveyors, gantries, fixtures.</p></div>
-          <div class="card"><h4>Industrial Washers &amp; Filters</h4><p>Shell filters, magnetic chips, paper band filters.</p></div>
-          <div class="card"><h4>High Pressure Compressors</h4><p>Layouts, piping, heat exchangers.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="section">
-      <div class="container">
-        <h2>Skills &amp; Tools</h2>
-        <div class="skill-columns" id="skillChips">
-          <!-- Skill chips (premium) -->
-          <li class="chip">Robotic Automation</li>
-          <li class="chip">Industrial Washers</li>
-          <li class="chip">Fixtures / EoAT</li>
-          <li class="chip">Conveyors</li>
-          <li class="chip">Project Proposals</li>
-          <li class="chip">Costing</li>
-          <li class="chip">Vendor Development</li>
-          <li class="chip">Installation Support</li>
-          <li class="chip">AutoCAD / Inventor / NX</li>
-          <li class="chip">Solid Edge / Catia</li>
-          <li class="chip">ASME / API / IS Standards</li>
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section id="education" class="section">
-      <div class="container">
-        <h2>Education</h2>
-        <div class="card">
-          <p><strong>B.E. (Mechanical)</strong> — 2005, Pune</p>
-          <p><strong>H.S.C.</strong> — Srirampur</p>
-          <p><strong>S.S.C.</strong> — Srirampur</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section contact-section">
-      <div class="container">
-        <h2>Contact</h2>
-        <div class="contact-grid">
-          <div class="card">
-            <h4>Get in touch</h4>
-            <p>Email: <a href="mailto:aashinde_be80@rediffmail.com">aashinde_be80@rediffmail.com</a></p>
-            <p>Phone: <a href="tel:+918669414519">+91 86694 14519</a></p>
-            <p>Location: Hadapsar, Pune</p>
-            <a class="btn primary" href="/mnt/data/Anand_Shinde_03_02_2025.docx" target="_blank" rel="noopener">
-              Resume (DOCX)
-            </a>
-          </div>
-
-          <form id="contactForm" class="card contact-form" onsubmit="return false;">
-            <label>Your name</label>
-            <input id="name" type="text" required>
-
-            <label>Email</label>
-            <input id="email" type="email" required>
-
-            <label>Message</label>
-            <textarea id="message" rows="5"></textarea>
-
-            <div class="form-actions">
-              <button class="btn primary" id="sendBtn" type="button">Send</button>
-              <button class="btn outline" type="reset">Reset</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer premium-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <div class="logo" aria-hidden="true">
-          <svg width="36" height="36" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100" rx="18" fill="#ffffff22"/></svg>
-        </div>
-        <div class="footer-text">
-          <h3>Anand Shinde</h3>
-          <p class="tag">Powertrain • Automation • Mechanical Design</p>
-        </div>
-      </div>
-
-      <div class="footer-right">
-        <p>© <span id="year"></span> Anand Shinde — Mechanical / Powertrain.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scroll to Top Button (Fixed) -->
-  <button id="scrollTopBtn" class="scroll-top-btn">↑</button>
-
-  <script src="script.js"></script>
+    /* Accessibility: allow Enter/Space toggle on summaries */
+    document.querySelectorAll('summary').forEach(s=>{
+      s.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          const d = s.parentElement;
+          d.open = !d.open;
+        }
+      });
+    });
+  </script>
 </body>
 </html>
