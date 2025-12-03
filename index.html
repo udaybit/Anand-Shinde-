@@ -467,47 +467,50 @@ header.header, .main-grid, aside.side {
     -webkit-text-fill-color: transparent;
     font-weight: 700;
 }
-/* ===== FULL MOBILE FIX FOR TYPING ANIMATION ===== */
+/* ===== COMPLETE MOBILE FIX FOR TYPING ANIMATION ===== */
 @media (max-width: 768px) {
-  /* Ensure parent container allows wrapping */
+
+  /* Stack header content vertically */
   .head-right {
-    display: block !important;  /* stack elements vertically */
+    display: block !important;
     width: 100% !important;
     padding-left: 0 !important;
     box-sizing: border-box;
   }
 
-  /* Typing wrapper adjustments */
+  /* Typing wrapper as block */
   .typing-wrap {
-    display: block !important;   /* remove flex behavior */
-    width: 100% !important;      /* full width */
-    overflow: hidden;            /* prevent overflow */
-    white-space: normal !important;  
+    display: block !important;
+    width: 100% !important;
+    overflow: hidden !important;     /* prevent horizontal scroll */
+    white-space: normal !important;  /* allow wrapping */
     word-break: break-word !important;
-    margin: 0;                   /* remove extra margins */
-    gap: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  /* Typing text adjustments */
+  /* Typing text styling */
   .typing {
-    display: inline-block !important;
-    max-width: 100% !important;
+    display: block !important;        /* force new line for text */
+    max-width: 100% !important;       /* restrict to container width */
+    font-size: 14px !important;       /* smaller font for mobile */
+    line-height: 1.4 !important;
     word-break: break-word !important;
     overflow-wrap: break-word !important;
     white-space: normal !important;
-    font-size: 14px !important;
-    line-height: 1.3 !important;
   }
 
-  /* Caret adjustments */
+  /* Caret styling */
   .typing-caret {
-    display: inline-block !important;
+    display: inline-block !important; /* keep caret inline with text */
+    margin-left: 2px !important;      /* small spacing */
     height: 20px !important;
     width: 2px !important;
-    margin-left: 2px !important;
-    vertical-align: bottom !important;
+    vertical-align: bottom !important; 
+    animation: blink-caret 1s steps(2,end) infinite !important;
   }
 }
+
 
   </style>
 </head>
