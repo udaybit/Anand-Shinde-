@@ -51,41 +51,15 @@ summary::after { content:"▼"; float:right; }
 /* Footer */
 footer { text-align:center; padding:2rem; margin-top:2rem; color:#777; font-size:0.9rem; }
 
-/* Typing animation */
-<script>
-const typing = document.querySelector('.typing');
-const text = typing.textContent;
-typing.textContent = '';
-
-let i = 0;
-let forward = true; // track typing direction
-
-function typeWriter() {
-  if (forward) {
-    // Type forward
-    typing.textContent = text.slice(0, i + 1);
-    i++;
-    if (i === text.length) forward = false; // start deleting when done
-  } else {
-    // Delete backward
-    typing.textContent = text.slice(0, i - 1);
-    i--;
-    if (i === 0) forward = true; // start typing again
-  }
-
-  setTimeout(typeWriter, 200); // constant speed (200ms per step)
-}
-
-typeWriter();
-</script>
-
-
-/* Floating chatbot button */
-#chatbot { position:fixed; bottom:30px; right:30px; background:#4e54c8; color:#fff; border:none; border-radius:50%; width:60px; height:60px; font-size:1.5rem; cursor:pointer; box-shadow:0 8px 20px rgba(0,0,0,0.3); }
-#chatbox { position:fixed; bottom:100px; right:30px; width:300px; max-width:90%; background:#fff; border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.2); display:none; flex-direction:column; overflow:hidden; }
+/* Floating chatbot button & box */
+#chatbot { position:fixed; bottom:30px; right:30px; background:#4e54c8; color:#fff; border:none; border-radius:50%; width:60px; height:60px; font-size:1.8rem; cursor:pointer; box-shadow:0 8px 20px rgba(0,0,0,0.3); }
+#chatbox { position:fixed; bottom:100px; right:30px; width:320px; max-width:90%; background:#fff; border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.2); display:none; flex-direction:column; overflow:hidden; }
 #chatbox header { background:#4e54c8; color:#fff; padding:0.8rem 1rem; font-weight:600; }
-#chatbox .messages { padding:1rem; height:200px; overflow-y:auto; }
-#chatbox input { border:none; border-top:1px solid #ddd; padding:0.8rem; width:100%; outline:none; }
+#chatbox .messages { padding:1rem; height:250px; overflow-y:auto; font-size:0.9rem; }
+#chatbox .input-container { display:flex; border-top:1px solid #ddd; }
+#chatbox input { border:none; padding:0.8rem; flex:1; outline:none; font-size:0.9rem; }
+#chatbox button.send-btn { background:#4e54c8; color:#fff; border:none; padding:0 1rem; cursor:pointer; font-weight:600; transition:0.3s; }
+#chatbox button.send-btn:hover { background:#8f94fb; }
 </style>
 </head>
 <body>
@@ -220,11 +194,14 @@ typeWriter();
 <p>Download Resume: <a href="resume.pdf" class="button" target="_blank">Download Resume</a></p>
 <p>LinkedIn: <a href="https://www.linkedin.com/in/anand-shinde-07aa45308" class="button" target="_blank">LinkedIn Profile</a></p>
 <p>Floating AI Chatbot for quick info:</p>
-<button id="chatbot">💬</button>
+<button id="chatbot">🤖</button>
 <div id="chatbox">
 <header>AI Assistant</header>
 <div class="messages"></div>
-<input type="text" placeholder="Ask about my portfolio...">
+<div class="input-container">
+<input type="text" placeholder="Ask about my portfolio..." id="chat-input">
+<button class="send-btn">Send</button>
+</div>
 </div>
 </section>
 
@@ -238,34 +215,49 @@ const typing = document.querySelector('.typing');
 const text = typing.textContent;
 typing.textContent = '';
 let i = 0;
-
 function typeWriter() {
   typing.textContent = text.slice(0, i + 1);
   i++;
-  if (i > text.length) i = 0; // loop back
-  setTimeout(typeWriter, 100); // ~150ms per character, readable speed
+  if(i>text.length) i=0;
+  setTimeout(typeWriter,100);
 }
-
-
-
-typeWriter(); // start typing
+typeWriter();
 
 // Chatbot toggle
 const chatbotBtn = document.getElementById('chatbot');
 const chatbox = document.getElementById('chatbox');
-chatbotBtn.addEventListener('click', ()=>{ chatbox.style.display = chatbox.style.display==='flex' ? 'none' : 'flex'; });
-const chatInput = chatbox.querySelector('input');
+const chatInput = document.getElementById('chat-input');
+const sendBtn = chatbox.querySelector('.send-btn');
 const chatMessages = chatbox.querySelector('.messages');
-chatInput.addEventListener('keypress', e=>{
-  if(e.key==='Enter'){
-    const userMsg = document.createElement('div'); userMsg.textContent = "You: " + chatInput.value;
-    chatMessages.appendChild(userMsg);
-    const botMsg = document.createElement('div'); botMsg.textContent = "AI: Thank you! I am reviewing my portfolio info.";
-    chatMessages.appendChild(botMsg);
-    chatInput.value='';
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+function sendMessage() {
+  const message = chatInput.value.trim();
+  if(!message) return;
+  const userMsg = document.createElement('div'); userMsg.textContent = "You: " + message;
+  chatMessages.appendChild(userMsg);
+
+  // Smart replies
+  const replyMap = {
+    about: "I have 19+ years experience in Powertrain, Automation, Washers & Conveyors.",
+    experience: "I have worked with TATA Cummins, PSA, Daimler, GM, Ford and more.",
+    projects: "Major projects include robotic deburring, industrial washers, conveyors, fixtures.",
+    contact: "You can reach me at aashinde_be80@rediffmail.com or 98903 35259.",
+    skills: "Key skills: Robotic automation, Powertrain, Industrial Washers, Conveyors, Fixtures."
+  };
+  const lower = message.toLowerCase();
+  let aiReply = "I'm here to help! Ask about experience, projects, skills or contact.";
+  for(const key in replyMap){
+    if(lower.includes(key)) aiReply = replyMap[key];
   }
-});
+  const botMsg = document.createElement('div'); botMsg.textContent = "AI: " + aiReply;
+  chatMessages.appendChild(botMsg);
+  chatInput.value='';
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+chatbotBtn.addEventListener('click', ()=>{ chatbox.style.display = chatbox.style.display==='flex'?'none':'flex'; });
+sendBtn.addEventListener('click', sendMessage);
+chatInput.addEventListener('keypress', e=>{ if(e.key==='Enter'){ sendMessage(); } });
 </script>
 </body>
 </html>
