@@ -26,17 +26,46 @@
     }
 
     /* ---------- Reset ---------- */
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-      background: linear-gradient(180deg,#ffffff,#f5f6f7);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-      padding:28px;
-    }
+    /* ========== FIX FOR FULL WIDTH & MOBILE RESPONSIVE ========== */
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(270deg, #ffefba, #ffffff, #ffe680, #fbfbfc);
+  background-size: 800% 800%;
+  animation: gradientBG 20s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
+
+.wrap {
+  max-width: var(--maxw); /* keeps desktop max width */
+  width: 100%;             /* ensures container fills screen */
+  margin: 0 auto;          /* center on large screens */
+  padding: 12px 15px;      /* small padding inside */
+  box-sizing: border-box;
+}
+
+/* Ensure header grid is fully responsive */
+header.header {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  header.header { grid-template-columns: 1fr; padding: 16px; }
+  .head-right { padding: 12px 0 0 0; }
+  .avatar { max-width: 140px; }
+  .main-grid { grid-template-columns: 1fr; gap: 16px; }
+  aside.side { flex-direction: column; }
+  .wrap { padding: 8px 12px; }
+}
+
 
     /* ---------- Layout container ---------- */
     .wrap{max-width:var(--maxw);margin:0 auto;padding:18px}
@@ -247,6 +276,197 @@
     @media (max-width:768px){
       body { animation: gradientBG 40s ease infinite; }
     }
+/* ===== MODERN FULL WIDTH & CENTERED HEADER ===== */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(270deg, #ffefba, #ffffff, #ffe680, #fbfbfc);
+  background-size: 800% 800%;
+  animation: gradientBG 20s ease infinite;
+}
+
+.wrap {
+  max-width: 1400px; /* modern wide layout */
+  width: 90%;
+  margin: 0 auto;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+header.header {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr; /* give content slightly more space */
+  align-items: center;
+  gap: 40px;
+  padding: 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(7,18,40,0.04);
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.99));
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+}
+
+.avatar {
+  width: 260px;
+  height: 260px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 6px solid transparent;
+  background: linear-gradient(180deg,#fff,#fff);
+  box-shadow: 0 18px 40px var(--soft-gold-shadow);
+  position: relative;
+  transition: transform .45s, box-shadow .45s;
+}
+
+.avatar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 6px;
+  background: linear-gradient(90deg,var(--gold-dark),var(--gold-mid));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  pointer-events: none;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.avatar:hover {
+  transform: translateY(-8px) rotateY(6deg);
+  box-shadow: 0 28px 60px rgba(120,80,0,0.16);
+}
+
+.head-right {
+  padding-left: 20px;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.typing-wrap {
+  display: flex;
+/* ===== MODERN BUTTON STYLES ===== */
+.links .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 20px rgba(12,22,60,0.05);
+}
+
+/* Primary Download Resume Button */
+.btn-primary {
+  background: linear-gradient(90deg, #d49b00, #ffcc33);
+  color: #071228;
+  border: none;
+  box-shadow: 0 12px 40px rgba(184,137,0,0.15);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #ffcc33, #ffe680);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 50px rgba(184,137,0,0.2);
+}
+
+/* LinkedIn Button */
+.btn-ghost {
+  background: #0077B5; /* LinkedIn brand color */
+  color: #fff;
+  border: none;
+  box-shadow: 0 8px 25px rgba(0,119,181,0.15);
+}
+
+.btn-ghost:hover {
+  background: #005582;
+  transform: tr
+/* ===== REMOVE SIDE SPACING ===== */
+.wrap {
+  max-width: 100% !important;
+  padding: 12px 15px !important;
+}
+
+/* ===== MODERN BUTTON COLORS ===== */
+.links .btn-primary {
+  background: linear-gradient(90deg, #d49b00, #ffcc33);
+  color: #071228;
+  border: none;
+  box-shadow: 0 12px 40px rgba(184,137,0,0.15);
+}
+
+.links .btn-primary:hover {
+  background: linear-gradient(90deg, #ffcc33, #ffe680);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 50px rgba(184,137,0,0.2);
+}
+
+.links .btn-ghost {
+  background: #0077B5; /* LinkedIn blue */
+  color: #fff;
+  border: none;
+  box-shadow: 0 8px 25px rgba(0,119,181,0.15);
+}
+
+.links .btn-ghost:hover {
+  background: #005582;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0,119,181,0.2);
+}
+/* ===== REMOVE ALL SIDE SPACING ===== */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* prevent horizontal scroll */
+}
+
+.wrap {
+  max-width: 100% !important; /* full width */
+  padding-left: 12px !important;  /* small padding for content */
+  padding-right: 12px !important; /* small padding for content */
+  margin: 0 auto !important;      /* center container if needed */
+  box-sizing: border-box;
+}
+
+header.header, .main-grid, aside.side {
+  max-width: 100% !important; /* force full width */
+}
+
+.main-grid {
+  display: block !important; /* prevent grid overflow */
+}
+/* Highlight education institute names */
+.side .mini .verbatim strong, 
+.side .mini .verbatim span.education-institute {
+    background: linear-gradient(90deg, #d49b00, #ffe680); /* gold gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
 
   </style>
 </head>
@@ -519,6 +739,10 @@ Email: aashinde_be80@rediffmail.com
     <footer>
       © <span id="year"></span> SHINDE ANAND  — All rights reserved.
     </footer>
+<div class="verbatim">
+Pass B.E. (Mechanical) in 2005 from <span class="education-institute">B.V.C.O.E. Pune</span>.<br>
+Pass H.S.C. from <span class="education-institute">R.B.N.B. College Srirampur</span>.<br>
+</div>
 
 
   <script>
