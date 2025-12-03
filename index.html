@@ -52,6 +52,28 @@
     }
 
     /* ---------- PROFILE CARD ---------- */
+    /* Make mobile + email super visible (Best Contrast Color) */
+    .meta strong { 
+      color: #0057ff; /* Pure bright royal blue – high visibility */
+      font-weight: 900;
+    }
+    .meta a {
+      color: #ff0066; /* Neon pink – extremely eye-catching */
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .verbatim a {
+      color: #ff0066;
+      font-weight: 900;
+    }
+
+    /* Strong Glow effect */
+    .meta strong, .meta a {
+      text-shadow: 0 0 10px rgba(255,0,120,0.55), 0 0 6px rgba(0,90,255,0.45);
+    }
+    .meta strong, .meta a {
+      text-shadow: 0 0 6px rgba(255,200,0,0.35);
+    }
     .profile{
       display:flex;flex-direction:column;align-items:center;gap:14px;padding:12px;
     }
@@ -101,25 +123,46 @@
     .title .highlight{background:linear-gradient(90deg,var(--gold-dark),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
     /* TYPING */
-    .typing-wrap { display:flex; align-items:center; gap:14px; margin-bottom:12px; flex-wrap:wrap }
-    .typing {
-      font-weight:800;
-      font-size:18px;
-      line-height:1;
-      color:var(--gold-dark);
-      -webkit-text-stroke: 0px rgba(0,0,0,0.02);
-      letter-spacing:0.2px;
-      min-height:26px;
-      white-space:nowrap;
-      overflow:hidden;
-    }
-    .typing-caret{
-      width:3px; height:24px; background:var(--gold-dark); display:inline-block;
-      animation: blink-caret 1s steps(2,end) infinite; border-radius:2px;
-    }
-    @keyframes blink-caret{ 50% { opacity:0 } }
+  /* TYPING */
+.typing-wrap { 
+  display:flex; 
+  align-items:center; 
+  gap:14px; 
+  margin-bottom:12px; 
+  flex-wrap:wrap; 
+  width:100%;
+}
 
-    .summary{color:var(--muted);font-size:14px;padding-bottom:10px;border-bottom:1px solid rgba(7,18,40,0.04);margin-bottom:14px}
+.typing {
+  font-weight:800;
+  font-size:18px;
+  line-height:1.4;
+  color:var(--gold-dark);
+  -webkit-text-stroke: 0px rgba(0,0,0,0.02);
+  letter-spacing:0.2px;
+  min-height:26px;
+
+  /* ✅ FIX: allow wrapping */
+  white-space:normal !important;
+  overflow-wrap:break-word;
+  word-break:break-word;
+
+  width:100%; /* ensures wrapping in small screens */
+}
+
+.typing-caret {
+  width:3px; 
+  height:24px; 
+  background:var(--gold-dark); 
+  display:inline-block;
+  animation: blink-caret 1s steps(2,end) infinite; 
+  border-radius:2px;
+}
+
+@keyframes blink-caret {
+  50% { opacity:0 }
+}
+
 
     /* ========== MAIN GRID ========== */
     .main-grid{display:grid;grid-template-columns:1fr;gap:22px;margin-top:22px}
@@ -278,7 +321,7 @@ body {
     <div class="name">ANAND SHINDE</div>
     <div class="role">Manager, Powertrain — Engineering & Development</div>
         <div class="meta">
-          <div>Mobile: <strong>8669414519</strong></div>
+          <div>Mobile: <strong> 98903 35259 </strong></div>
           <div>Hadapsar, Pune - 28</div>
           <div>Email: <a href="mailto:aashinde_be80@rediffmail.com" style="color:var(--gold-mid);text-decoration:none">aashinde_be80@rediffmail.com</a></div>
         </div>
@@ -589,9 +632,118 @@ Email: aashinde_be80@rediffmail.com
  
 
 
+
+
+<!-- Floating Chatbot -->
+<div id="chatbot-button">💬</div>
+<div id="chatbot-box">
+  <div id="chatbot-header">AI Assistant <span id="chatbot-close">×</span></div>
+  <div id="chatbot-messages"></div>
+  <input id="chatbot-input" type="text" placeholder="Ask anything..." />
+</div>
+
+<style>
+  /* Floating chat button */
+  #chatbot-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #0057ff;
+    color: #fff;
+    padding: 14px 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 22px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+  }
+
+  /* Chat window */
+  #chatbot-box {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+  }
+
+  #chatbot-header {
+    background: #0057ff;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  #chatbot-close {
+    float: right;
+    cursor: pointer;
+  }
+
+  #chatbot-messages {
+    height: 260px;
+    padding: 10px;
+    overflow-y: auto;
+    font-size: 14px;
+  }
+
+  #chatbot-input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-top: 1px solid #ddd;
+    outline: none;
+  }
+
+  .bot-msg { color: #111; margin-bottom: 10px; }
+  .user-msg { text-align: right; color: #0057ff; margin-bottom: 10px; }
+</style>
+
+<script>
+  const chatButton = document.getElementById('chatbot-button');
+  const chatBox = document.getElementById('chatbot-box');
+  const chatClose = document.getElementById('chatbot-close');
+  const chatInput = document.getElementById('chatbot-input');
+  const chatMessages = document.getElementById('chatbot-messages');
+
+  const answers = {
+    "name": "This website belongs to Anand Shinde.",
+    "skills": "Skills include Frontend, Backend, UI/UX, and automation.",
+    "experience": "Over 5+ years of professional experience.",
+    "contact": "You can contact via mobile or email shown in the header.",
+    "resume": "You can download the resume from the website.",
+    "default": "Sorry, I can answer only website‑related questions."
+  };
+
+  chatButton.onclick = () => chatBox.style.display = 'flex';
+  chatClose.onclick = () => chatBox.style.display = 'none';
+
+  chatInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      let msg = chatInput.value.trim();
+      if (!msg) return;
+
+      chatMessages.innerHTML += `<div class='user-msg'>${msg}</div>`;
+      chatInput.value = '';
+
+      let key = msg.toLowerCase();
+      let reply = answers[key] || answers.default;
+
+      setTimeout(() => {
+        chatMessages.innerHTML += `<div class='bot-msg'>${reply}</div>`;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 400);
+    }
+  });
+</script>
+
 </body>
 </html>
-
 
 
 
