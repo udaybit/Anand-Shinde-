@@ -52,8 +52,33 @@ summary::after { content:"▼"; float:right; }
 footer { text-align:center; padding:2rem; margin-top:2rem; color:#777; font-size:0.9rem; }
 
 /* Typing animation */
-.typing { border-right:2px solid #ffe600; white-space:nowrap; overflow:hidden; animation: typing 3s steps(40, end) infinite; }
-@keyframes typing { 0%,50%,100% { width:0; } 25%,75% { width:100%; } }
+<script>
+const typing = document.querySelector('.typing');
+const text = typing.textContent;
+typing.textContent = '';
+
+let i = 0;
+let forward = true; // track typing direction
+
+function typeWriter() {
+  if (forward) {
+    // Type forward
+    typing.textContent = text.slice(0, i + 1);
+    i++;
+    if (i === text.length) forward = false; // start deleting when done
+  } else {
+    // Delete backward
+    typing.textContent = text.slice(0, i - 1);
+    i--;
+    if (i === 0) forward = true; // start typing again
+  }
+
+  setTimeout(typeWriter, 200); // constant speed (200ms per step)
+}
+
+typeWriter();
+</script>
+
 
 /* Floating chatbot button */
 #chatbot { position:fixed; bottom:30px; right:30px; background:#4e54c8; color:#fff; border:none; border-radius:50%; width:60px; height:60px; font-size:1.5rem; cursor:pointer; box-shadow:0 8px 20px rgba(0,0,0,0.3); }
@@ -212,16 +237,18 @@ footer { text-align:center; padding:2rem; margin-top:2rem; color:#777; font-size
 const typing = document.querySelector('.typing');
 const text = typing.textContent;
 typing.textContent = '';
-let i=0;
+let i = 0;
+
 function typeWriter() {
-  if(i < text.length) {
-    typing.textContent += text.charAt(i);
-    i++;
-    setTimeout(typeWriter,50);
-  } else { i=0; typing.textContent=''; setTimeout(typeWriter,500); }
+  typing.textContent = text.slice(0, i + 1);
+  i++;
+  if (i > text.length) i = 0; // loop back
+  setTimeout(typeWriter, 100); // ~150ms per character, readable speed
 }
-typeWriter();
-setInterval(typeWriter,4000);
+
+
+
+typeWriter(); // start typing
 
 // Chatbot toggle
 const chatbotBtn = document.getElementById('chatbot');
