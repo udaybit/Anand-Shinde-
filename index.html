@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title> ANAND SHINDE — Professional portfolio</title>
+  <title> ANAND SHINDE — Professional portfolio </title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
@@ -572,74 +572,32 @@ Email: aashinde_be80@rediffmail.com
 
 
 
-<!-- Floating Chatbot -->
-<div id="chatbot-button">💬</div>
-<div id="chatbot-box">
-  <div id="chatbot-header">AI Assistant <span id="chatbot-close">×</span></div>
+<!-- Floating Chatbot Button -->
+<!-- Floating Chatbot Button -->
+<div id="chatbot-button" aria-label="Open chat assistant">💬</div>
+
+<!-- Chatbot Box -->
+<div id="chatbot-box" role="dialog" aria-label="AI Assistant Chatbot">
+  <div id="chatbot-header">
+    AI Assistant <span id="chatbot-close" aria-label="Close chatbot">×</span>
+  </div>
   <div id="chatbot-messages"></div>
-  <input id="chatbot-input" type="text" placeholder="Ask anything..." />
+  <div style="display:flex;gap:6px; padding:6px;">
+    <input id="chatbot-input" type="text" placeholder="Ask about Anand Shinde's portfolio..." aria-label="Chat input" style="flex:1; padding:10px; border-radius:6px; border:1px solid #ddd;"/>
+    <button id="chatbot-send" style="padding:10px 16px; background:#0057ff; color:#fff; border:none; border-radius:6px; cursor:pointer;">Send</button>
+  </div>
 </div>
 
 <style>
-  /* Floating chat button */
-  #chatbot-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #0057ff;
-    color: #fff;
-    padding: 14px 16px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 22px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    z-index: 9999;
-  }
-
-  /* Chat window */
-  #chatbot-box {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 300px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    display: none;
-    flex-direction: column;
-    overflow: hidden;
-    z-index: 9999;
-  }
-
-  #chatbot-header {
-    background: #0057ff;
-    color: #fff;
-    padding: 10px;
-    font-weight: bold;
-  }
-
-  #chatbot-close {
-    float: right;
-    cursor: pointer;
-  }
-
-  #chatbot-messages {
-    height: 260px;
-    padding: 10px;
-    overflow-y: auto;
-    font-size: 14px;
-  }
-
-  #chatbot-input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-top: 1px solid #ddd;
-    outline: none;
-  }
-
-  .bot-msg { color: #111; margin-bottom: 10px; }
-  .user-msg { text-align: right; color: #0057ff; margin-bottom: 10px; }
+  #chatbot-button { position: fixed; bottom: 30px; right: 30px; background: #0057ff; color: #fff; padding: 16px; border-radius: 50%; cursor: pointer; font-size: 24px; box-shadow: 0 6px 15px rgba(0,0,0,0.3); z-index: 9999; transition: transform 0.2s; }
+  #chatbot-button:hover { transform: scale(1.1); }
+  #chatbot-box { position: fixed; bottom: 80px; right: 30px; width: 360px; max-width: 90%; height: 450px; background: #fff; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.25); display: none; flex-direction: column; overflow: hidden; z-index: 9999; font-family: Inter, sans-serif; }
+  #chatbot-header { background: #0057ff; color: #fff; padding: 14px 16px; font-weight: bold; font-size: 16px; }
+  #chatbot-close { float: right; cursor: pointer; font-size: 18px; }
+  #chatbot-messages { flex: 1; padding: 12px; overflow-y: auto; font-size: 14px; background: #f5f5f5; }
+  .bot-msg { color: #111; margin-bottom: 12px; background: #e0e7ff; padding: 10px 12px; border-radius: 10px; max-width: 85%; word-wrap: break-word; animation: fadeIn 0.3s ease-in; }
+  .user-msg { text-align: right; color: #0057ff; margin-bottom: 12px; background: #d1f0ff; padding: 10px 12px; border-radius: 10px; max-width: 85%; margin-left: auto; word-wrap: break-word; animation: fadeIn 0.3s ease-in; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 
 <script>
@@ -648,37 +606,87 @@ Email: aashinde_be80@rediffmail.com
   const chatClose = document.getElementById('chatbot-close');
   const chatInput = document.getElementById('chatbot-input');
   const chatMessages = document.getElementById('chatbot-messages');
-
-  const answers = {
-    "name": "This website belongs to Anand Shinde.",
-    "skills": "Skills include Frontend, Backend, UI/UX, and automation.",
-    "experience": "Over 5+ years of professional experience.",
-    "contact": "You can contact via mobile or email shown in the header.",
-    "resume": "You can download the resume from the website.",
-    "default": "Sorry, I can answer only website‑related questions."
-  };
+  const chatSend = document.getElementById('chatbot-send');
 
   chatButton.onclick = () => chatBox.style.display = 'flex';
   chatClose.onclick = () => chatBox.style.display = 'none';
 
-  chatInput.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-      let msg = chatInput.value.trim();
-      if (!msg) return;
-
-      chatMessages.innerHTML += `<div class='user-msg'>${msg}</div>`;
-      chatInput.value = '';
-
-      let key = msg.toLowerCase();
-      let reply = answers[key] || answers.default;
-
-      setTimeout(() => {
-        chatMessages.innerHTML += `<div class='bot-msg'>${reply}</div>`;
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-      }, 400);
+  const smartResponses = {
+    greetings: ["hi","hello","hey","good morning","good evening"],
+    farewell: ["bye","goodbye","see you","later"],
+    thanks: ["thanks","thank you","thx"],
+    default: ["I am here to provide details about Anand Shinde’s professional portfolio. Ask about his experience, skills, projects, education, or contact."],
+    responses: {
+      "hi":"Hello! I’m Anand Shinde’s portfolio assistant. You can ask me about his experience, skills, or projects.",
+      "hello":"Hi there! I can tell you all about Anand Shinde’s work experience, skills, and projects.",
+      "hey":"Hey! I’m here to answer questions about Anand Shinde’s portfolio.",
+      "good morning":"Good morning! Ask me anything about Anand Shinde’s professional experience.",
+      "good evening":"Good evening! I can provide details about Anand Shinde’s skills, projects, and education.",
+      "bye":"Goodbye! Feel free to return and ask more about Anand Shinde’s portfolio.",
+      "thank you":"You’re welcome! I’m here to provide info about Anand Shinde’s work and skills."
+    },
+    portfolio: {
+      "resume":"You can download Anand Shinde's resume from the website.",
+      "skills":"Skills include Powertrain Engineering, Robotic Automation, Industrial Washers, CAD design (AutoCAD, Inventor, NX, Solid Edge, Catia).",
+      "experience":"Over 19 years of professional experience in Design & R&D for Powertrain and Automation projects.",
+      "contact":"Contact via email or mobile shown in the profile.",
+      "projects":"Major projects include Robotic Automation, Industrial Washers, Conveyors, Handling systems, and international client work."
     }
-  });
+  };
+
+  function getSmartResponse(msg){
+    const text = msg.toLowerCase();
+    for(const g of smartResponses.greetings) if(text.includes(g)) return smartResponses.responses[g];
+    for(const f of smartResponses.farewell) if(text.includes(f)) return smartResponses.responses[f] || "Goodbye!";
+    for(const t of smartResponses.thanks) if(text.includes(t)) return smartResponses.responses[t];
+    for(const key in smartResponses.portfolio) if(text.includes(key)) return smartResponses.portfolio[key];
+    return smartResponses.default[0];
+  }
+
+  function addBotMessage(text){
+    return new Promise(resolve=>{
+      const botMsgDiv = document.createElement('div');
+      botMsgDiv.className = 'bot-msg';
+      chatMessages.appendChild(botMsgDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      let i=0;
+      const speed = 25;
+      function type(){
+        botMsgDiv.textContent = text.slice(0,i);
+        i++;
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        if(i <= text.length) setTimeout(type, speed);
+        else resolve();
+      }
+      type();
+    });
+  }
+
+  async function sendMessage(){
+    const msg = chatInput.value.trim();
+    if(!msg) return;
+    chatMessages.innerHTML += `<div class='user-msg'>${msg}</div>`;
+    chatInput.value='';
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    await addBotMessage("Typing...");
+    const lastBot = chatMessages.querySelector('.bot-msg:last-child');
+    lastBot.textContent='';
+    const reply = getSmartResponse(msg);
+    await addBotMessage(reply);
+  }
+
+  chatSend.addEventListener('click', sendMessage);
+  chatInput.addEventListener('keypress', (e)=>{ if(e.key==='Enter') sendMessage(); });
+
+
 </script>
+
+
+ 
+
+
 
 </body>
 </html>
