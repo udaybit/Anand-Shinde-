@@ -1,977 +1,244 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title> ANAND SHINDE — Professional portfolio </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anand Shinde - Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Fira+Code&display=swap" rel="stylesheet">
+<style>
+/* Reset & basic styles */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Roboto', sans-serif; background: #f5f6fa; color: #1a1a1a; line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+/* Smooth scrolling */
+html { scroll-behavior: smooth; }
 
-  <style>
-    /* ================= THEME: ULTRA DARK GOLD (Option C) ================ */
-    :root{
-      --bg: #fbfbfc;
-      --panel: #ffffff;
-      --muted: #6b7280;
-      --text: #071228;
-      --gold-dark:#d49b00;
-      --gold-mid:#ffcc33;
-      --gold-light:#ffe680;
-      --glass: rgba(7,18,40,0.03);
-      --soft-gold-shadow: rgba(184,137,0,0.12);
-      --shadow: 0 16px 50px rgba(12,22,60,0.07);
-      --radius:16px;
-      --maxw:1200px;
-    }
+/* Header */
+header { display: flex; align-items: center; justify-content: space-between; padding: 2rem; background: linear-gradient(90deg,#4e54c8,#8f94fb); color: #fff; }
+header .logo { font-size: 1.8rem; font-weight: 700; }
+header nav a { margin-left: 1.5rem; font-weight: 500; transition: 0.3s; }
+header nav a:hover { text-decoration: underline; }
 
-    /* ---------- Reset ---------- */
-    /* ========== FIX FOR FULL WIDTH & MOBILE RESPONSIVE ========== */
+/* Hero section */
+.hero { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 4rem 2rem; background: linear-gradient(135deg,#8f94fb,#4e54c8); color: #fff; border-radius: 0 0 50% 50% / 20%; }
+.hero .info { flex:1; max-width:600px; }
+.hero h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+.hero h3 { font-weight:400; margin-bottom: 1rem; }
+.hero .typing { font-family: 'Fira Code', monospace; font-weight:700; color:#ffe600; }
+.hero img { border-radius:50%; width:200px; height:200px; object-fit:cover; border:4px solid #fff; }
 
-body {
-  padding: 0;
-  margin: 0;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: linear-gradient(270deg, #ffefba, #ffffff, #ffe680, #fbfbfc);
-  background-size: 800% 800%;
-  animation: gradientBG 20s ease infinite;
-}
+/* Section styles */
+section { padding: 3rem 2rem; max-width: 1000px; margin: 0 auto; }
+section h2 { font-size:2rem; color:#4e54c8; margin-bottom:1.5rem; position: relative; }
+section h2::after { content:''; width:50px; height:4px; background:#8f94fb; display:block; margin-top:0.5rem; border-radius:2px; }
 
-@keyframes gradientBG {
-  0% { background-position:0% 50%; }
-  50% { background-position:100% 50%; }
-  100% { background-position:0% 50%; }
-}
+/* Info grid */
+.info-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
+.info-grid div { background:#fff; padding:1.5rem; border-radius:15px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition:0.3s; }
+.info-grid div:hover { transform: translateY(-5px); }
 
-.wrap {
-  max-width: var(--maxw); /* keeps desktop max width */
-  width: 100%;             /* ensures container fills screen */
-  margin: 0 auto;          /* center on large screens */
-  padding: 12px 15px;      /* small padding inside */
-  box-sizing: border-box;
-}
+/* Collapsible sections */
+details { background:#fff; padding:1rem 1.5rem; margin-bottom:1rem; border-radius:12px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+summary { font-weight:600; cursor:pointer; font-size:1.1rem; outline:none; }
+details[open] summary::after { content:"▲"; float:right; }
+summary::after { content:"▼"; float:right; }
 
-/* Ensure header grid is fully responsive */
-header.header {
-  width: 100%;
-  box-sizing: border-box;
-}
+/* Buttons */
+.button { display:inline-block; margin-top:1rem; padding:0.7rem 1.5rem; background:#4e54c8; color:#fff; border-radius:50px; font-weight:600; transition:0.3s; }
+.button:hover { background:#8f94fb; }
 
-@media (max-width: 768px) {
-  header.header { grid-template-columns: 1fr; padding: 16px; }
-  .head-right { padding: 12px 0 0 0; }
-  .avatar { max-width: 140px; }
-  .main-grid { grid-template-columns: 1fr; gap: 16px; }
-  aside.side { flex-direction: column; }
-  .wrap { padding: 8px 12px; }
-}
+/* Footer */
+footer { text-align:center; padding:2rem; margin-top:2rem; color:#777; font-size:0.9rem; }
 
+/* Typing animation */
+.typing { border-right:2px solid #ffe600; white-space:nowrap; overflow:hidden; animation: typing 3s steps(40, end) infinite; }
+@keyframes typing { 0%,50%,100% { width:0; } 25%,75% { width:100%; } }
 
-    /* ---------- Layout container ---------- */
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:18px}
-
-    /* ========== HEADER (Left profile + Right content) ========== */
-    header.header{ display:grid; grid-template-columns:1fr 300px; /* Single column */
-      gap:28px;
-      align-items:start;
-      background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.99));
-      padding:24px;border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      border:1px solid rgba(7,18,40,0.04);
-    }
-
-    /* ---------- PROFILE CARD ---------- */
-    .meta strong { 
-      color: #0057ff;
-      font-weight: 900;
-    }
-    .meta a {
-      color: #ff0066;
-      font-weight: 900;
-      text-decoration: none;
-    }
-    .verbatim a {
-      color: #ff0066;
-      font-weight: 900;
-    }
-    .meta strong, .meta a {
-      text-shadow: 0 0 6px rgba(255,200,0,0.35);
-    }
-    .profile{
-      display:flex;flex-direction:column;align-items:center;gap:14px;padding:12px;
-    }
-    .avatar{
-      width:240px;height:240px;border-radius:18px;overflow:hidden;
-      border:6px solid linear-gradient(90deg,var(--gold-dark),var(--gold-light));
-      background:linear-gradient(180deg,#fff,#fff);
-      box-shadow:0 18px 40px var(--soft-gold-shadow);
-      transition:transform .45s, box-shadow .45s;
-    }
-    .avatar { position: relative; }
-    .avatar::before{
-      content:"";position:absolute;inset:0;border-radius:14px;padding:6px;
-      background:linear-gradient(90deg,var(--gold-dark),var(--gold-mid));
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude;
-      pointer-events:none;
-    }
-    .avatar img{width:100%;height:100%;object-fit:cover;display:block;border-radius:10px}
-    .avatar:hover{transform:translateY(-8px) rotateY(6deg);box-shadow:0 28px 60px rgba(120,80,0,0.16)}
-
-    .name{font-family:Poppins,Inter;font-weight:700;font-size:20px;color:var(--text);text-align:center}
-    .role{color:var(--muted);font-size:13px;text-align:center}
-    .meta{display:flex;flex-direction:column;gap:6px;margin-top:6px;font-size:13px;color:var(--muted);text-align:center}
-
-    .links{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;justify-content:center}
-    .btn{
-      display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;
-      text-decoration:none;font-weight:700;border:1px solid rgba(7,18,40,0.05);color:var(--text);
-      background:transparent;transition:all .22s;
-      box-shadow: 0 8px 20px rgba(12,22,60,0.04);
-    }
-    .btn-primary{
-      background: linear-gradient(90deg,var(--gold-dark),var(--gold-mid));
-      color:#08121a;border:none;
-      box-shadow:0 12px 40px rgba(184,137,0,0.12);
-    }
-    .btn-ghost{
-      background:transparent;border:1px solid rgba(7,18,40,0.06)
-    }
-    .btn:hover{transform:translateY(-4px);}
-
-    /* ========== RIGHT HEADER CONTENT ========== */
-    .head-right{padding:6px 6px 6px 0}
-    .title{font-size:24px;font-weight:700;font-family:Poppins,Inter;margin-bottom:8px}
-    .title .highlight{background:linear-gradient(90deg,var(--gold-dark),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-
-    /* TYPING */
-    .typing-wrap { 
-      display:flex; 
-      align-items:center; 
-      gap:14px; 
-      margin-bottom:12px; 
-      flex-wrap:wrap; 
-      width:100%;
-    }
-
-    .typing {
-      font-weight:800;
-      font-size:18px;
-      line-height:1.4;
-      color:var(--gold-dark);
-      -webkit-text-stroke: 0px rgba(0,0,0,0.02);
-      letter-spacing:0.2px;
-      min-height:26px;
-
-      white-space:normal !important;
-      overflow-wrap:break-word;
-      word-break:break-word;
-
-      width:100%;
-    }
-
-    .typing-caret {
-      width:3px; 
-      height:24px; 
-      background:var(--gold-dark); 
-      display:inline-block;
-      animation: blink-caret 1s steps(2,end) infinite; 
-      border-radius:2px;
-    }
-
-    @keyframes blink-caret {
-      50% { opacity:0 }
-    }
-
-    /* ========== MAIN GRID ========== */
-    .main-grid{display:grid;grid-template-columns:1fr;gap:22px;margin-top:22px}
-
-    /* ========== SECTION CARD ========== */
-    section.card{
-      background: linear-gradient(180deg,#ffffff,#fcfcfc);
-      padding:18px;border-radius:14px;border:1px solid rgba(7,18,40,0.03);
-      box-shadow:0 18px 40px rgba(12,22,60,0.05);
-    }
-    section.card h2{font-size:16px;margin-bottom:12px;color:transparent;background:linear-gradient(90deg,var(--gold-dark),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
-
-    /* ========== EXPERIENCE LIST ========== */
-    .exp-list{display:flex;flex-direction:column;gap:14px}
-    .exp{
-      padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
-      border:1px solid rgba(184,137,0,0.06);
-      transition: transform .35s, box-shadow .35s;
-      box-shadow: 0 8px 28px rgba(12,22,60,0.04);
-    }
-    .exp:hover{transform:translateY(-8px);box-shadow:0 28px 60px rgba(12,22,60,0.10)}
-    .exp .head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
-    .company{font-weight:700;background:linear-gradient(90deg,#004aad,#00b7ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-    .duration{font-size:13px;background:linear-gradient(90deg,#ff4d4d,#ff9966);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-    details{margin-top:10px}
-    summary{cursor:pointer;font-weight:700;color:var(--gold-dark);list-style:none}
-    summary::-webkit-details-marker{display:none}
-
-    /* ========== VERBATIM & SIDEBAR ========== */
-    .verbatim{white-space:pre-wrap;color:var(--muted);font-size:14px;background:transparent;padding:10px;border-radius:8px}
-    .side{display:flex;flex-direction:column;gap:14px}
-    .side .mini{
-      padding:14px;border-radius:12px;background:linear-gradient(180deg,#fff,#fff);
-      border:1px solid rgba(7,18,40,0.03);box-shadow:0 12px 30px rgba(12,22,60,0.04);
-    }
-    .label{font-weight:700;background:linear-gradient(90deg,#8e2de2,#4a00e0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;}
-    .skills{display:flex;flex-wrap:wrap;gap:8px}
-    .skill-pill{background:linear-gradient(90deg,#fff,#fff);padding:8px 10px;border-radius:999px;border:1px solid rgba(7,18,40,0.03);font-weight:600;color:var(--text);font-size:13px}
-
-    .contact-box{
-      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
-      border:1px solid rgba(184,137,0,0.12); padding:12px;border-radius:12px;
-      box-shadow: 0 10px 28px rgba(184,137,0,0.06);
-    }
-    .contact-box a{color:var(--gold-mid);font-weight:700;text-decoration:none}
-
-    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px;padding:6px}
-
-    a:focus,button:focus,summary:focus{outline:3px solid rgba(184,137,0,0.18);outline-offset:3px}
-
-    /* ---------- Responsive adjustments ---------- */
-    @media (max-width: 1024px) {
-      header.header { grid-template-columns: 1fr 1fr; }
-      .avatar { width: 180px; height: 180px; }
-      .head-right .title { font-size: 20px; }
-      .typing { font-size: 16px; }
-    }
-    @media (max-width: 720px) {
-      header.header { grid-template-columns: 1fr; gap: 18px; }
-      .avatar { width: 140px; height: 140px; }
-      .head-right .title { font-size: 18px; }
-      .typing { font-size: 14px; min-height: 20px; }
-      .main-grid { grid-template-columns: 1fr; }
-      aside.side { flex-direction: column; }
-      .side .mini { padding: 12px; }
-      .btn { padding: 10px 12px; font-size: 13px; }
-    }
-    @media (max-width:768px){
-      header.header { grid-template-columns:1fr; padding:16px; }
-      .head-right { padding:12px 0 0 0; }
-      .avatar { width:140px; height:140px; }
-      .title { font-size:18px; }
-      .typing { font-size:14px; }
-      .main-grid { grid-template-columns:1fr; gap:16px; }
-      section.card { padding:12px; }
-      .exp { padding:12px; }
-      .btn { padding:10px 14px; font-size:13px; }
-    }
-
-    /* =================== BACKGROUND ANIMATION =================== */
-    body {
-      background: linear-gradient(270deg, #ffefba, #ffffff, #ffe680, #fbfbfc);
-      background-size: 800% 800%;
-      animation: gradientBG 20s ease infinite;
-    }
-    @keyframes gradientBG {
-      0% {background-position:0% 50%;}
-      50% {background-position:100% 50%;}
-      100% {background-position:0% 50%;}
-    }
-    @media (max-width:768px){
-      body { animation: gradientBG 40s ease infinite; }
-    }
-/* ===== MODERN FULL WIDTH & CENTERED HEADER ===== */
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: linear-gradient(270deg, #ffefba, #ffffff, #ffe680, #fbfbfc);
-  background-size: 800% 800%;
-  animation: gradientBG 20s ease infinite;
-}
-
-.wrap {
-  max-width: 1400px; /* modern wide layout */
-  width: 90%;
-  margin: 0 auto;
-  padding: 12px;
-  box-sizing: border-box;
-}
-
-header.header {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr; /* give content slightly more space */
-  align-items: center;
-  gap: 40px;
-  padding: 24px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(7,18,40,0.04);
-  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.99));
-}
-
-.profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  padding: 12px 0;
-}
-
-.avatar {
-  width: 260px;
-  height: 260px;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 6px solid transparent;
-  background: linear-gradient(180deg,#fff,#fff);
-  box-shadow: 0 18px 40px var(--soft-gold-shadow);
-  position: relative;
-  transition: transform .45s, box-shadow .45s;
-}
-
-.avatar::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 14px;
-  padding: 6px;
-  background: linear-gradient(90deg,var(--gold-dark),var(--gold-mid));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude;
-  pointer-events: none;
-}
-
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.avatar:hover {
-  transform: translateY(-8px) rotateY(6deg);
-  box-shadow: 0 28px 60px rgba(120,80,0,0.16);
-}
-
-.head-right {
-  padding-left: 20px;
-}
-
-.title {
-  font-size: 26px;
-  font-weight: 700;
-}
-
-.typing-wrap {
-  display: flex;
-/* ===== MODERN BUTTON STYLES ===== */
-.links .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 14px 20px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 15px;
-  text-decoration: none;
-  transition: all 0.25s ease;
-  box-shadow: 0 8px 20px rgba(12,22,60,0.05);
-}
-
-/* Primary Download Resume Button */
-.btn-primary {
-  background: linear-gradient(90deg, #d49b00, #ffcc33);
-  color: #071228;
-  border: none;
-  box-shadow: 0 12px 40px rgba(184,137,0,0.15);
-}
-
-.btn-primary:hover {
-  background: linear-gradient(90deg, #ffcc33, #ffe680);
-  transform: translateY(-4px);
-  box-shadow: 0 18px 50px rgba(184,137,0,0.2);
-}
-
-/* LinkedIn Button */
-.btn-ghost {
-  background: #0077B5; /* LinkedIn brand color */
-  color: #fff;
-  border: none;
-  box-shadow: 0 8px 25px rgba(0,119,181,0.15);
-}
-
-.btn-ghost:hover {
-  background: #005582;
-  transform: tr
-/* ===== REMOVE SIDE SPACING ===== */
-.wrap {
-  max-width: 100% !important;
-  padding: 12px 15px !important;
-}
-
-/* ===== MODERN BUTTON COLORS ===== */
-.links .btn-primary {
-  background: linear-gradient(90deg, #d49b00, #ffcc33);
-  color: #071228;
-  border: none;
-  box-shadow: 0 12px 40px rgba(184,137,0,0.15);
-}
-
-.links .btn-primary:hover {
-  background: linear-gradient(90deg, #ffcc33, #ffe680);
-  transform: translateY(-2px);
-  box-shadow: 0 18px 50px rgba(184,137,0,0.2);
-}
-
-.links .btn-ghost {
-  background: #0077B5; /* LinkedIn blue */
-  color: #fff;
-  border: none;
-  box-shadow: 0 8px 25px rgba(0,119,181,0.15);
-}
-
-.links .btn-ghost:hover {
-  background: #005582;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(0,119,181,0.2);
-}
-/* ===== REMOVE ALL SIDE SPACING ===== */
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden; /* prevent horizontal scroll */
-}
-
-.wrap {
-  max-width: 100% !important; /* full width */
-  padding-left: 12px !important;  /* small padding for content */
-  padding-right: 12px !important; /* small padding for content */
-  margin: 0 auto !important;      /* center container if needed */
-  box-sizing: border-box;
-}
-
-header.header, .main-grid, aside.side {
-  max-width: 100% !important; /* force full width */
-}
-
-.main-grid {
-  display: block !important; /* prevent grid overflow */
-}
-/* Highlight education institute names */
-.side .mini .verbatim strong, 
-.side .mini .verbatim span.education-institute {
-    background: linear-gradient(90deg, #d49b00, #ffe680); /* gold gradient */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
-}
-/* ===== FINAL RESPONSIVE FIXES ===== */
-@media (max-width: 1024px) {
-  .wrap { width: 95%; padding: 12px; }
-  header.header { grid-template-columns: 1fr 1fr; gap: 24px; padding: 20px; }
-  .avatar { width: 200px; height: 200px; }
-  .head-right .title { font-size: 22px; }
-  .typing { font-size:16px; min-height:22px; }
-  .links .btn { padding:12px 16px; font-size:14px; }
-  .side .mini { padding:14px; }
-}
-
-@media (max-width: 768px) {
-  header.header { grid-template-columns: 1fr; padding:16px; }
-  .head-right { padding:12px 0 0 0; }
-  .avatar { width:160px; height:160px; }
-  .title { font-size:20px; }
-  .typing { font-size:14px; min-height:20px; }
-  .main-grid { grid-template-columns:1fr; gap:16px; }
-  section.card, .exp { padding:12px; }
-  .btn { padding:10px 14px; font-size:13px; }
-  aside.side { flex-direction: column; }
-  .side .mini { padding:12px; }
-}
-
-@media (max-width: 480px) {
-  .wrap { width: 98%; padding:10px; }
-  .avatar { width:120px; height:120px; }
-  .title { font-size:18px; }
-  .typing { font-size:13px; min-height:18px; }
-  .head-right { padding:10px 0 0 0; }
-  .links .btn { padding:8px 12px; font-size:12px; }
-  section.card, .exp { padding:10px; }
-  footer { font-size:12px; padding:4px; }
-}
-
-/* Prevent hover effect on mobile to avoid layout jump */
-@media (hover: none) {
-  .avatar:hover { transform: none; box-shadow: 0 18px 40px var(--soft-gold-shadow); }
-}
-/* --- FINAL FIX FOR MOBILE TYPING TEXT --- */
-.typing-wrap {
-  display: block !important;     /* stop flex pushing text outside */
-  width: 100% !important;
-}
-
-.typing {
-  display: block !important;     
-  white-space: normal !important; 
-  word-break: break-word !important;
-  overflow-wrap: break-word !important;
-  width: 100% !important;
-  max-width: 100% !important;     /* block overflow */
-}
-
-.typing-caret {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-  </style>
+/* Floating chatbot button */
+#chatbot { position:fixed; bottom:30px; right:30px; background:#4e54c8; color:#fff; border:none; border-radius:50%; width:60px; height:60px; font-size:1.5rem; cursor:pointer; box-shadow:0 8px 20px rgba(0,0,0,0.3); }
+#chatbox { position:fixed; bottom:100px; right:30px; width:300px; max-width:90%; background:#fff; border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.2); display:none; flex-direction:column; overflow:hidden; }
+#chatbox header { background:#4e54c8; color:#fff; padding:0.8rem 1rem; font-weight:600; }
+#chatbox .messages { padding:1rem; height:200px; overflow-y:auto; }
+#chatbox input { border:none; border-top:1px solid #ddd; padding:0.8rem; width:100%; outline:none; }
+</style>
 </head>
 <body>
-  <div class="wrap" role="main">
 
-    <!-- HEADER -->
- <header class="header" aria-label="Profile header">
-  <div class="profile">
-    <div class="avatar" role="img" aria-label="Profile photo">
-    <img src="profile.jpg" alt="Profile photo — ANAND SHINDE" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+<!-- Header -->
+<header>
+<div class="logo">Anand Shinde</div>
+<nav>
+<a href="#about">About</a>
+<a href="#experience">Experience</a>
+<a href="#projects">Projects</a>
+<a href="#education">Education</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
 
-    </div>
-    <div class="name">ANAND SHINDE</div>
-    <div class="role">Manager, Powertrain — Engineering & Development</div>
-        <div class="meta">
-          <div>Mobile: <strong> 98903 35259 </strong></div>
-          <div>Hadapsar, Pune - 28</div>
-          <div>Email: <a href="mailto:aashinde_be80@rediffmail.com" style="color:var(--gold-mid);text-decoration:none">aashinde_be80@rediffmail.com</a></div>
-        </div>
-        <div class="links" role="navigation" aria-label="Profile links">
-          <a class="btn btn-primary" href="resume.pdf" download aria-label="Download resume">Download Resume</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/anand-shinde-07aa45308" target="_blank" rel="noopener" aria-label="Open LinkedIn profile">LinkedIn</a>
-        </div>
-      </div>
-      <div class="head-right">
-        <div class="title">Experienced Powertrain Manager — <span class="highlight">19+ Years</span></div>
-        <div class="typing-wrap" aria-hidden="false">
-          <div class="typing" id="typed"></div>
-          <div class="typing-caret" aria-hidden="true"></div>
-        </div>
-        <div class="summary">
-          Objective: To achieve best possible success through hard work & continuous update my personality by learning through experience.
-        </div>
-        <div class="muted" style="font-size:14px">
-          Total Experience: <strong>19 Years 05 months (In Design)</strong><br>
-          Current Role: Manager, Powertrain (Engineering & Development Department)
-        </div>
-      </div>
-    </header>
-    
-    <!-- MAIN GRID -->
-    <div class="main-grid" role="region" aria-label="Main content">
-      <div>
-        <!-- PROFESSIONAL EXPERIENCE -->
-        <section class="card" aria-labelledby="exp">
-          <h2 id="exp">Professional Experience</h2>
-          <div class="exp-list" role="list">
-            <!-- CHROPYNSKA -->
-            <article class="exp" role="listitem" aria-labelledby="chropy">
-              <div class="head">
-                <div>
-                  <div class="company" id="chropy">Company: CHROPYNSKA INDIA PVT. LTD.</div>
-                  <div class="duration">Duration: April 2023 - till today.</div>
-                  <div class="muted" style="margin-top:6px">Job Profile: Manager, Powertrain (Engineering & Development Department)</div>
-                </div>
-                <div class="duration muted">Total Exp. 19 Years 05 months (In Design)</div>
-              </div>
-              <details>
-                <summary>View full details</summary>
-                <div class="verbatim" style="margin-top:10px">
-PRESENT ROLE: Individual handling of Powertrain projects, Work for proposals & cost estimation.
-Design machines as per industry 4.0 requirement & industry safety requirement. Lead design team for product development & design release. Build suppliers for product improvement. Interaction with third party safety audit to fulfil safety requirements for machine. Support installation team to smooth handover the product to the customer. Customer: TATA Cummins, Phaltan, Cummins India Limited, Cummins Jamshedpur, PSA, Daimler (Mercedes-Benz Group). 
-CAD SOFTWARE’S: Auto – Cad 2000 - 2018, Auto desk Inventor 2018, & UG NX11.0.
-Familiar with Solid Edge V20, Catia V5R19,
-                </div>
-              </details>
-            </article>
+<!-- Hero Section -->
+<section class="hero">
+<div class="info">
+<h1>Anand Shinde</h1>
+<h3>Manager, Powertrain — Engineering & Development</h3>
+<div class="typing">Robotic Automation | Powertrain Projects | Industrial Washers | Conveyors | Fixtures</div>
+<a href="resume.pdf" class="button" target="_blank">Download Resume</a>
+<a href="https://www.linkedin.com/in/anand-shinde-07aa45308" class="button" target="_blank">LinkedIn</a>
+</div>
+<img src="profile.jpg" alt="Anand Shinde Profile">
+</section>
 
-            <!-- VALIANT -->
-            <article class="exp" role="listitem" aria-labelledby="valiant">
-              <div class="head">
-                <div>
-                  <div class="company" id="valiant">Company: Valiant-TMS Systems Pvt. Ltd. Pune, Maharashtra, India.</div>
-                  <div class="duration">Duration: November 2012 to March 2023. (10.4 Years)</div>
-                  <div class="muted" style="margin-top:6px">Job Profile: Manager, Powertrain (Engineering & Development Department)</div>
-                </div>
-                <div class="duration muted">Role & Projects</div>
-              </div>
-              <details>
-                <summary>View full details</summary>
-                <div class="verbatim" style="margin-top:10px">
-A] Valiant-TMS Systems Pvt. Ltd.
-Role & Projects: 
-1. Design & Install Robotic Deburring stations & high-pressure Robotic washers for TATA Cummins Phaltan.
-Role Develop suppliers, Project costing, Concept design, Design approval, Assembly support & trials, Installation.
-2. Automation for Automobile sector: PRB conveyor & lifter for PSA group, PRB conveyors for main line of Mercedes-Benz for five countries.
-3. Design & Development of Robotic Battery cells 
-Role Design welding fixtures for various sub-assembly of battery panel as per customer inputs. Design leak-testing machine for cross members of battery unit. Work on cycle time to achieve production rate.
-4. Design & develop Industrial washers, Conveyors, Grippers (EoAT), Fixtures, Vacuum bell, Cooling. 
-   Tunnel.
-Role Design concept & layout for robotic washer (automatic) as per customer RFQ. Design fixtures, EoAT, piping for washing purposes & different tools related to washer. Guide the team members to solve the query. Co-ordinate with parent company Valiant TMS Canada. Checking of 2D detailing upload to Canada office for manufacturing. Attend the conference meeting for new line-up upload by Canada office. Guide the team for new concepts or solve queries during design & detailing. Customer GM, Alison, Chrysler, Ford, Hiram, Hirata, and United Technologies Corporation (UTC). Work on semi-automatic & manual washers. Work on leak testing machine, SPM with robot & Cobot. Coordinate with customer & North America, Canada team members.
-                </div>
-              </details>
-            </article>
-
-            <!-- ZIPPEL -->
-            <article class="exp" role="listitem" aria-labelledby="zippel">
-              <div class="head">
-                <div>
-                  <div class="company" id="zippel">Company: Zippel GmbH & Co. Pvt. Ltd, Pune, Maharashtra.</div>
-                  <div class="duration">Duration: June 2010 to Nov.2012 (2.5 Years)</div>
-                  <div class="muted" style="margin-top:6px">Job Profile: Sr. Design Engineer (Research & Development Department)</div>
-                </div>
-                <div class="duration muted">Role & Responsibilities</div>
-              </div>
-              <details>
-                <summary>View full details</summary>
-                <div class="verbatim" style="margin-top:10px">
-B] Master Zippel Ind. Pvt. Ltd.
-1. Design & develop industrial washers. 
-Role. Prepare G.A. & P & ID as per customer PO. Selection of system pumps, nozzles, sensors, pneumatic cylinders, valves, gearbox & filtration system. Design the pneumatic circuit & co-ordinate with controls department. Finalized bought-out items as per P.O. offer & our standard make. Design 3D model in Solid Edge V20. Discuss the logic of machine with control department for PLC programming. Decide the safety interlocks required for the safety of operator & product. Check manufacturing drawings. List out the problem during assembly & provide solution for it. Conduct trials to prove the machine. 
-2. Design conveyors & turn table – Hands on power & free, powered, gravitational, overhang, chain, roller.  
-conveyor, stop & go, pick & place, lift & carry up-down machines.
-Role. Design conveyor based on type of component/application of conveyor. Design role selection of motor as per torque & gearbox as per reduction speed, sprockets etc. Select material for handling system. 
-3. Design Fixtures for components like cylinder head, cylinder block & crank shaft for washing purposes. 
-4. Design work on sheet metals.
-Role. Develop & design enclosure for industrial washers. Work for nesting of all cutting parts. Selection of foams as per applications. 2D drawing checking.
-5. Design & Develop filters for Industrial washers. Design shell type high- & low-pressure filter. Filters with 
-Self-cleaning arrangement. Design & develop magnetic filter for metal chips. Design & develop by re-engineering disc / belt type oil removal filters. Design & develop Paper band filter & Up-flow filter for Industrial washer’s application. 
-Extra Activity: To save project cost build inhouse different air nozzles for drying system, Develop magnetic chip removal filter for industrial washers.
-                </div>
-              </details>
-            </article>
-
-            <!-- FILTRATION TECHNIK -->
-            <article class="exp" role="listitem" aria-labelledby="filtration">
-              <div class="head">
-                <div>
-                  <div class="company" id="filtration">Company: Filtration Technik India, Pune, Maharashtra.</div>
-                  <div class="duration">Duration: April 2009 to June 2010 (1.2 Years)</div>
-                  <div class="muted" style="margin-top:6px">Job Profile: Sr. Project Engineer (Research & Development Department)</div>
-                </div>
-                <div class="duration muted">Role & Projects</div>
-              </div>
-              <details>
-                <summary>View full details</summary>
-                <div class="verbatim" style="margin-top:10px">
-C] Filtration Technik, India.
-1. Design high-pressure Piping. 
-Role. Design high-pressure piping for air/gas for product filters & dryers. Conduct on-site trials for new proto-type filters. Conduct trials on air dryers for high & low-pressure air.   
-2. Prepare air-piping layout for customer approval also prepare BOM & quote for new orders. Visit customers. 
-Role. Prepare layout & BOM for proto-type project. Prepare specification sheet for bought-out items. Conduct meetings with suppliers for new development, conduct trials as per standard. Develop new venders as per the policy of the company to reduce costs & to avoid monopoly of suppliers.
-                </div>
-              </details>
-            </article>
-
-            <!-- KIRLOSKAR -->
-            <article class="exp" role="listitem" aria-labelledby="kirloskar">
-              <div class="head">
-                <div>
-                  <div class="company" id="kirloskar">Company: Kirloskar Pneumatic Co. Ltd, Pune, Maharashtra.</div>
-                  <div class="duration">Duration: 8 Aug. 2005 to March 2009 (3.7 Years)</div>
-                  <div class="muted" style="margin-top:6px">Job Profile: Sr. Design Engineer (Research & Development Department)</div>
-                </div>
-                <div class="duration muted">Role & Projects</div>
-              </div>
-              <details>
-                <summary>View full details</summary>
-                <div class="verbatim" style="margin-top:10px">
-D] Kirloskar Pneumatic Co. Ltd.
-1. Design & engineering of reciprocating compressors for air & gas.
-Role. Prepare layout, P & ID for compressor for customer approval. Selections of cylinder combination for build require pressure & CFM. Selection of drive, valve, heat exchanger. Design air piping for compressors. Release BOM as per customer requirement. Conduct trials for CFM & pressure. 
-2. Design & testing Heat Exchanger (Cooler).
-Role.	Prepare specification sheet of heat exchanger for material required heat exchanger area available. Inlet Temp. Outlet Temp. Required. Discuss the specification with approved supplier for manufacturing. All designs with reference to ASME code & space available. After manufacturing approval & check test certificates as per standard. Conduct in-house trials for dispatch.
-3.	Sheet metal & structure design.
-Role. Design enclosed canopy for screw compressor. Develop 3D model in inventor for mounting details & opening, then prepare 2D detailed drawings with laser cutting drawing details. Testing of canopy for noise level reduction & vibration. 
-PROJECTS:
-Reciprocating Compressors: 
-1. Engineering & development of new products related mainly to Air & Gas compressors.
-2. Development of existing products as per customer requirements.
-3. Solid modeling of component in Autodesk Inventor Professional 10 & prepare manufacturing drawing in Auto-CAD 2000 & 2007. 
-Screw Compressors: 
-Design & Develop screw compressor for oil, dust & moisture free air for special application. Conduct various trials in-house & site for customer approval.
-Special Projects: 
-1.	Service Air Trolley (SAT-650, SAT-300, SAT-800 & SAT-800E): Develop mobile air-cooling trolley for Sukhoi Aircraft application (Mobile AC for Defence). Detailing & Trials for new engine in house.
-2.	Nitrogen Generating Station: Mobile Nitrogen generating, storage and transportation station for Sukhoi Aircraft application. This is the unique product that involves, on site generation of Nitrogen, boosting to 350 bars, and drying to ultra-low dew point as low as (-) 95 °C (Mobile unit for Defence).
-3.	Oxygen Charging Delivery Vehicle: Oxygen charging vehicle for Aircraft application & Medical Purpose. Up to pressure 350 Bars. Role Detailing of parts & help in R & D assembly shop.
-4.	M.A.C.V. & KG5H (High pressure compressors) Compressor builds pressure 750-850 Kg/cm2 pressure. Use mainly for missile lunching & other defence application. Work for R & D assembly shop.
-5.	D.M.D.E. (High Pressure 500 bar) Detailing high pressure compressor. Output pressure is 400 bar. Special 
-design for defence application. 
-Role.	Modeling 3D & 2D detailing of compressor prepare BOM & submit for release.
-Client: - H.A.L., Indian Railway, Cement, Textiles, Paper, Chemical, Automobile, food, Construction industries.
-Standardisation of various components to reduce Verity (Inventory) to save assembly time, save cost of product before & after sale.
-Knowledge of various:  
-IS Standards for design various components & testing, ASME & TEMA code for heat exchanger design, API Standards for various valve design, also refer various Standards for manufacturing & coating. Also have of various International & Military Standards knowledge.
-                </div>
-              </details>
-            </article>
-          </div>
-        </section>
-
-        <!-- BRIEF WORK AREA & MAJOR PROJECTS -->
-        <section class="card" aria-labelledby="workarea">
-          <h2 id="workarea">BRIEF WORK AREA & MAJOR PROJECTS</h2>
-          <div class="verbatim">
-BRIEF WORK AREA:
-	Robotic Automation solution for engine assembly. 
-	Robotic deburring & washing systems for engine components. 
-	Handling systems with Robot & Cobot as per requirement.   
-	Interaction with customers with new RFQ’s with cost effective solutions.
-	Design machines as per Industry 4.0 requirement & industry safety standards.   
-	Work for international customers like GM, FORD, Canoo, Nemak, Honda USA, Caterpillar,   
-    Chrysler, Cummins USA, etc.
-	Handle international customers. Work with parent company Valiant Machine Tools Canada.
-	Additional responsibility – Work for proposal department for powertrain projects, Work for vendor development department (Purchase department) & project management for powertrain projects.
-
-MAJOR PROJECTS: 
-	Deburring Systems, Industrial washers.
-	Robot & Cobot Handling systems, Conveyors, Gantry, Work for different AGV’s.
-	Automation & inspection stations.
-	BIW fixturing, BIW line conveyors for underbody, Tackles for closer line.
-	High Pressure Air Compressors, Cooling by Turboexpander by compressed air.  
-          </div>
-        </section>
-      </div>
-
-      <!-- SIDEBAR -->
-      <aside class="side" aria-label="Sidebar">
-        <div class="mini side-stack">
-          <div class="label">PRESENT ROLE & CAD SOFTWARE'S</div>
-          <div class="verbatim">
-PRESENT ROLE: Individual handling of Powertrain projects, Work for proposals & cost estimation.
-Design machines as per industry 4.0 requirement & industry safety requirement. Lead design team for product development & design release. Build suppliers for product improvement. Interaction with third party safety audit to fulfil safety requirements for machine. Support installation team to smooth handover the product to the customer. Customer: TATA Cummins, Phaltan, Cummins India Limited, Cummins Jamshedpur, PSA, Daimler (Mercedes-Benz Group).
-CAD SOFTWARE’S: Auto – Cad 2000 - 2018, Auto desk Inventor 2018, & UG NX11.0.
-Familiar with Solid Edge V20, Catia V5R19,
-          </div>
-        </div>
-
-        <div class="mini side-stack">
-          <div class="label">SKILLS / STANDARDS / TOOLS</div>
-          <div class="verbatim">
-Knowledge of various:  
-IS Standards for design various components & testing, ASME & TEMA code for heat exchanger design, API Standards for various valve design, also refer various Standards for manufacturing & coating. Also have of various International & Military Standards knowledge.
-          </div>
-        </div>
-
-        <div class="mini side-stack">
-          <div class="label">Education</div>
-          <div class="verbatim">
-Pass B.E. (Mechanical) in 2005 from B.V.C.O.E. Pune.
-Pass H.S.C. from R.B.N.B. College Srirampur.
-Pass S.S.C. from K.J.S. High School, Srirampur.
-B. E. Project:  Automatic Chalk Making M/C 
-Description:  Design of Geneva Disc, Geneva Cam, Selection of 1. Chain 2. Motor & 3. Gear Box.
-Seminar: Flight Data Recorder.
-Extra Activities: Table Tennis player, Swimming Champion
-          </div>
-        </div>
-
-        <div class="mini side-stack">
-          <div class="label">Personal Profile & Contact</div>
-          <div class="verbatim">
-Father’s Name: Dr. Anil Mahadeorao Shinde
-Date of Birth: 27th Feb. 1980
-Gender: Male
-Nationality: Indian
-Marital Status: Married
-Languages Known: English, Hindi, and Marathi.
-
-Contact:
-Mobile: 8669414519
-Hadapsar, Pune - 28
-Email: aashinde_be80@rediffmail.com
-          </div>
-        </div>
-      </aside>
-    </div>
-
-    <footer>
-      © <span id="year"></span> SHINDE ANAND  — All rights reserved.
-    </footer>
-<div class="verbatim">
-Pass B.E. (Mechanical) in 2005 from <span class="education-institute">B.V.C.O.E. Pune</span>.<br>
-Pass H.S.C. from <span class="education-institute">R.B.N.B. College Srirampur</span>.<br>
+<!-- About Section -->
+<section id="about">
+<h2>Personal Information</h2>
+<div class="info-grid">
+<div><strong>Mobile:</strong> 98903 35259<br><strong>Alternate:</strong> 8669414519</div>
+<div><strong>Email:</strong> aashinde_be80@rediffmail.com<br><strong>Location:</strong> Hadapsar, Pune - 28</div>
+<div><strong>DOB:</strong> 27th Feb 1980<br><strong>Gender:</strong> Male</div>
+<div><strong>Nationality:</strong> Indian<br><strong>Marital Status:</strong> Married</div>
+<div><strong>Languages:</strong> English, Hindi, Marathi<br><strong>Father's Name:</strong> Dr. Anil Mahadeorao Shinde</div>
 </div>
 
+<h2>Professional Summary</h2>
+<p>Experience: 19 Years 05 months in Design & R&D</p>
+<p>Current Role: Manager, Powertrain (Engineering & Development Department)</p>
+<p>Objective: Achieve success through hard work & continuous learning through experience</p>
+<p>Key Strengths: Powertrain projects, proposals, cost estimation, machine design as per Industry 4.0 and safety standards, leading design teams, supplier development, customer interaction</p>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+<h2>CAD Skills</h2>
+<p>AutoCAD 2000–2018, Autodesk Inventor 2018, UG NX11.0 | Familiar: Solid Edge V20, Catia V5R19</p>
+<p>Clients: TATA Cummins, Cummins India Limited, Cummins Jamshedpur, PSA, Daimler</p>
+</section>
 
-    (function(){
-      const phrases = [
-        "Manager — Powertrain Engineering & Development",
-        "Industrial Automation • Robotic Systems • Powertrain",
-        "19 Years 05 Months experience in Design & R&D",
-        "Global Projects • Clients: TATA Cummins, Mercedes-Benz, GM, Ford, Cummins USA"
-      ];
-      const el = document.getElementById('typed');
-      let p = 0, i = 0, forward = true;
+<!-- Experience Section -->
+<section id="experience">
+<h2>Professional Experience</h2>
 
-      function step(){
-        const full = phrases[p];
-        if(forward){
-          i++;
-          el.textContent = full.slice(0,i);
-          if(i >= full.length){
-            forward = false;
-            setTimeout(step, 1400);
-            return;
-          }
-        } else {
-          i--;
-          el.textContent = full.slice(0,i);
-          if(i <= 0){
-            forward = true;
-            p = (p+1) % phrases.length;
-          }
-        }
-        setTimeout(step, 36 + Math.random()*36);
-      }
-      step();
-    })();
+<details>
+<summary>CHROPYNSKA INDIA PVT. LTD. — Manager, Powertrain (Apr 2023 – Present)</summary>
+<p>Leading Powertrain projects, proposals, and supplier development.<br>Clients: TATA Cummins, Cummins India, PSA, Daimler</p>
+<ul>
+<li>Individual handling of Powertrain projects, proposals & cost estimation.</li>
+<li>Design machines per Industry 4.0 & safety standards.</li>
+<li>Lead design team, supplier development, and support installation.</li>
+<li>CAD: AutoCAD, Inventor, UG NX11.0</li>
+</ul>
+</details>
 
-    document.querySelectorAll('summary').forEach(s=>{
-      s.addEventListener('keydown', (e)=>{
-        if(e.key === 'Enter' || e.key === ' '){
-          e.preventDefault();
-          const d = s.parentElement;
-          d.open = !d.open;
-        }
-      });
-    });
-  </script>
- 
+<details>
+<summary>Valiant-TMS Systems Pvt. Ltd., Pune — Manager, Powertrain (Nov 2012 – Mar 2023)</summary>
+<ul>
+<li>Robotic automation, industrial washers, conveyors & battery assembly automation.</li>
+<li>Design & install robotic deburring stations & high-pressure robotic washers for TATA Cummins Phaltan.</li>
+<li>Automation for PSA & Mercedes-Benz main line.</li>
+<li>Design battery cell fixtures, leak testing machines, conveyors, grippers.</li>
+<li>Coordinate with Valiant TMS Canada for approvals.</li>
+<li>Clients: GM, Allison, Chrysler, Ford, Hiram, Hirata, UTC</li>
+</ul>
+</details>
 
+<details>
+<summary>Zippel GmbH & Co. Pvt. Ltd., Pune — Sr. Design Engineer (Jun 2010 – Nov 2012)</summary>
+<ul>
+<li>Industrial washers: G.A., P&ID, pump, nozzle, sensor, cylinder & valve selection.</li>
+<li>Conveyor systems: powered, gravitational, chain, roller, lift & carry machines.</li>
+<li>Fixture design for cylinder head, block, crankshaft washing.</li>
+<li>Sheet metal design, nesting, foam selection.</li>
+<li>Filter design: high/low pressure, magnetic, paper-band, up-flow filters.</li>
+</ul>
+</details>
 
+<details>
+<summary>Filtration Technik India — Sr. Project Engineer (Apr 2009 – Jun 2010)</summary>
+<ul>
+<li>High-pressure piping design for air/gas filters & dryers.</li>
+<li>Prepare layouts, BOMs, and quotes for prototypes.</li>
+<li>Vendor development & cost reduction.</li>
+</ul>
+</details>
 
+<details>
+<summary>Kirloskar Pneumatic Co. Ltd. — Sr. Design Engineer (Aug 2005 – Mar 2009)</summary>
+<ul>
+<li>Design of reciprocating compressors & heat exchangers.</li>
+<li>Sheet metal & structure design: enclosures, 3D & 2D drawings.</li>
+<li>Trials for CFM & pressure compliance (ASME standards).</li>
+</ul>
+</details>
 
-<!-- Floating Chatbot Button -->
-<!-- Floating Chatbot Button -->
-<div id="chatbot-button" aria-label="Open chat assistant">💬</div>
+<h2>Core Expertise & Skills</h2>
+<p>Robotic automation, powertrain project management, industrial washers, conveyors, fixtures</p>
+<p>International clients: GM, Ford, Cummins, Daimler, Honda, PSA, Chrysler</p>
+</section>
 
-<!-- Chatbot Box -->
-<div id="chatbot-box" role="dialog" aria-label="AI Assistant Chatbot">
-  <div id="chatbot-header">
-    AI Assistant <span id="chatbot-close" aria-label="Close chatbot">×</span>
-  </div>
-  <div id="chatbot-messages"></div>
-  <div style="display:flex;gap:6px; padding:6px;">
-    <input id="chatbot-input" type="text" placeholder="Ask about Anand Shinde's portfolio..." aria-label="Chat input" style="flex:1; padding:10px; border-radius:6px; border:1px solid #ddd;"/>
-    <button id="chatbot-send" style="padding:10px 16px; background:#0057ff; color:#fff; border:none; border-radius:6px; cursor:pointer;">Send</button>
-  </div>
+<!-- Projects Section -->
+<section id="projects">
+<h2>Major Projects & Work Areas</h2>
+<p><strong>Work Areas:</strong> Robotic Automation, Deburring & Washing Systems, Robot & Cobot Handling, Customer Interaction, RFQs, Cost-Effective Solutions</p>
+<p><strong>Clients:</strong> GM, Ford, Canoo, Nemak, Honda USA, Caterpillar, Chrysler, Cummins USA</p>
+<p><strong>Major Projects:</strong> Deburring systems, industrial washers, Robot & Cobot handling systems, conveyors, gantry, AGVs, Automation & inspection stations, BIW fixturing, BIW line conveyors, High-pressure air compressors, turboexpander cooling</p>
+</section>
+
+<!-- Education Section -->
+<section id="education">
+<h2>Education</h2>
+<p>B.E. Mechanical (2005) – B.V.C.O.E. Pune | Project: Automatic Chalk Making Machine | Seminar: Flight Data Recorder</p>
+<p>Extra Activities: Table Tennis, Swimming Champion</p>
+<p>H.S.C. – R.B.N.B. College, Srirampur</p>
+<p>S.S.C. – K.J.S. High School, Srirampur</p>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+<h2>Contact & Interactive Features</h2>
+<p>Download Resume: <a href="resume.pdf" class="button" target="_blank">Download Resume</a></p>
+<p>LinkedIn: <a href="https://www.linkedin.com/in/anand-shinde-07aa45308" class="button" target="_blank">LinkedIn Profile</a></p>
+<p>Floating AI Chatbot for quick info:</p>
+<button id="chatbot">💬</button>
+<div id="chatbox">
+<header>AI Assistant</header>
+<div class="messages"></div>
+<input type="text" placeholder="Ask about my portfolio...">
 </div>
+</section>
 
-<style>
-  #chatbot-button { position: fixed; bottom: 30px; right: 30px; background: #0057ff; color: #fff; padding: 16px; border-radius: 50%; cursor: pointer; font-size: 24px; box-shadow: 0 6px 15px rgba(0,0,0,0.3); z-index: 9999; transition: transform 0.2s; }
-  #chatbot-button:hover { transform: scale(1.1); }
-  #chatbot-box { position: fixed; bottom: 80px; right: 30px; width: 360px; max-width: 90%; height: 450px; background: #fff; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.25); display: none; flex-direction: column; overflow: hidden; z-index: 9999; font-family: Inter, sans-serif; }
-  #chatbot-header { background: #0057ff; color: #fff; padding: 14px 16px; font-weight: bold; font-size: 16px; }
-  #chatbot-close { float: right; cursor: pointer; font-size: 18px; }
-  #chatbot-messages { flex: 1; padding: 12px; overflow-y: auto; font-size: 14px; background: #f5f5f5; }
-  .bot-msg { color: #111; margin-bottom: 12px; background: #e0e7ff; padding: 10px 12px; border-radius: 10px; max-width: 85%; word-wrap: break-word; animation: fadeIn 0.3s ease-in; }
-  .user-msg { text-align: right; color: #0057ff; margin-bottom: 12px; background: #d1f0ff; padding: 10px 12px; border-radius: 10px; max-width: 85%; margin-left: auto; word-wrap: break-word; animation: fadeIn 0.3s ease-in; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-</style>
+<footer>
+<p>&copy; 2025 Anand Shinde | Designed as a World-Class Portfolio</p>
+</footer>
 
 <script>
-  const chatButton = document.getElementById('chatbot-button');
-  const chatBox = document.getElementById('chatbot-box');
-  const chatClose = document.getElementById('chatbot-close');
-  const chatInput = document.getElementById('chatbot-input');
-  const chatMessages = document.getElementById('chatbot-messages');
-  const chatSend = document.getElementById('chatbot-send');
+// Typing effect
+const typing = document.querySelector('.typing');
+const text = typing.textContent;
+typing.textContent = '';
+let i=0;
+function typeWriter() {
+  if(i < text.length) {
+    typing.textContent += text.charAt(i);
+    i++;
+    setTimeout(typeWriter,50);
+  } else { i=0; typing.textContent=''; setTimeout(typeWriter,500); }
+}
+typeWriter();
+setInterval(typeWriter,4000);
 
-  chatButton.onclick = () => chatBox.style.display = 'flex';
-  chatClose.onclick = () => chatBox.style.display = 'none';
-
-  const smartResponses = {
-    greetings: ["hi","hello","hey","good morning","good evening"],
-    farewell: ["bye","goodbye","see you","later"],
-    thanks: ["thanks","thank you","thx"],
-    default: ["I am here to provide details about Anand Shinde’s professional portfolio. Ask about his experience, skills, projects, education, or contact."],
-    responses: {
-      "hi":"Hello! I’m Anand Shinde’s portfolio assistant. You can ask me about his experience, skills, or projects.",
-      "hello":"Hi there! I can tell you all about Anand Shinde’s work experience, skills, and projects.",
-      "hey":"Hey! I’m here to answer questions about Anand Shinde’s portfolio.",
-      "good morning":"Good morning! Ask me anything about Anand Shinde’s professional experience.",
-      "good evening":"Good evening! I can provide details about Anand Shinde’s skills, projects, and education.",
-      "bye":"Goodbye! Feel free to return and ask more about Anand Shinde’s portfolio.",
-      "thank you":"You’re welcome! I’m here to provide info about Anand Shinde’s work and skills."
-    },
-    portfolio: {
-      "resume":"You can download Anand Shinde's resume from the website.",
-      "skills":"Skills include Powertrain Engineering, Robotic Automation, Industrial Washers, CAD design (AutoCAD, Inventor, NX, Solid Edge, Catia).",
-      "experience":"Over 19 years of professional experience in Design & R&D for Powertrain and Automation projects.",
-      "contact":"Contact via email or mobile shown in the profile.",
-      "projects":"Major projects include Robotic Automation, Industrial Washers, Conveyors, Handling systems, and international client work."
-    }
-  };
-
-  function getSmartResponse(msg){
-    const text = msg.toLowerCase();
-    for(const g of smartResponses.greetings) if(text.includes(g)) return smartResponses.responses[g];
-    for(const f of smartResponses.farewell) if(text.includes(f)) return smartResponses.responses[f] || "Goodbye!";
-    for(const t of smartResponses.thanks) if(text.includes(t)) return smartResponses.responses[t];
-    for(const key in smartResponses.portfolio) if(text.includes(key)) return smartResponses.portfolio[key];
-    return smartResponses.default[0];
-  }
-
-  function addBotMessage(text){
-    return new Promise(resolve=>{
-      const botMsgDiv = document.createElement('div');
-      botMsgDiv.className = 'bot-msg';
-      chatMessages.appendChild(botMsgDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-
-      let i=0;
-      const speed = 25;
-      function type(){
-        botMsgDiv.textContent = text.slice(0,i);
-        i++;
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-        if(i <= text.length) setTimeout(type, speed);
-        else resolve();
-      }
-      type();
-    });
-  }
-
-  async function sendMessage(){
-    const msg = chatInput.value.trim();
-    if(!msg) return;
-    chatMessages.innerHTML += `<div class='user-msg'>${msg}</div>`;
+// Chatbot toggle
+const chatbotBtn = document.getElementById('chatbot');
+const chatbox = document.getElementById('chatbox');
+chatbotBtn.addEventListener('click', ()=>{ chatbox.style.display = chatbox.style.display==='flex' ? 'none' : 'flex'; });
+const chatInput = chatbox.querySelector('input');
+const chatMessages = chatbox.querySelector('.messages');
+chatInput.addEventListener('keypress', e=>{
+  if(e.key==='Enter'){
+    const userMsg = document.createElement('div'); userMsg.textContent = "You: " + chatInput.value;
+    chatMessages.appendChild(userMsg);
+    const botMsg = document.createElement('div'); botMsg.textContent = "AI: Thank you! I am reviewing my portfolio info.";
+    chatMessages.appendChild(botMsg);
     chatInput.value='';
     chatMessages.scrollTop = chatMessages.scrollHeight;
-
-    await addBotMessage("Typing...");
-    const lastBot = chatMessages.querySelector('.bot-msg:last-child');
-    lastBot.textContent='';
-    const reply = getSmartResponse(msg);
-    await addBotMessage(reply);
   }
-
-  chatSend.addEventListener('click', sendMessage);
-  chatInput.addEventListener('keypress', (e)=>{ if(e.key==='Enter') sendMessage(); });
-
-
+});
 </script>
-
-
- 
-
-
-
 </body>
 </html>
-
-
-
