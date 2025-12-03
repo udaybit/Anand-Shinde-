@@ -467,6 +467,34 @@ header.header, .main-grid, aside.side {
     -webkit-text-fill-color: transparent;
     font-weight: 700;
 }
+/* ===== MOBILE-OPTIMIZED TYPING ANIMATION ===== */
+@media (max-width: 768px) {
+  .typing-wrap {
+    display: block;            /* stack text and caret vertically */
+    gap: 0;                     /* remove flex gap */
+    width: 100%;                /* full width of parent */
+    overflow: hidden;           /* prevent overflowing */
+  }
+
+  .typing {
+    display: inline-block;      /* keeps caret inline with text */
+    max-width: 100%;            /* ensure it does not exceed container */
+    word-break: break-word;     /* break long words */
+    overflow-wrap: break-word;  /* support all browsers */
+    white-space: normal;        /* allow wrapping */
+    font-size: 14px;            /* smaller font on mobile */
+    line-height: 1.3;           /* adjust line spacing */
+  }
+
+  .typing-caret {
+    display: inline-block;      /* inline caret */
+    margin-left: 2px;           /* small space from text */
+    height: 20px;               /* smaller caret height */
+    width: 2px;                 /* thinner caret on mobile */
+    animation: blink-caret 1s steps(2,end) infinite;
+    vertical-align: bottom;     /* align with text baseline */
+  }
+}
 
   </style>
 </head>
