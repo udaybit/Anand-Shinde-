@@ -506,6 +506,25 @@ header.header, .main-grid, aside.side {
 @media (hover: none) {
   .avatar:hover { transform: none; box-shadow: 0 18px 40px var(--soft-gold-shadow); }
 }
+/* --- FINAL FIX FOR MOBILE TYPING TEXT --- */
+.typing-wrap {
+  display: block !important;     /* stop flex pushing text outside */
+  width: 100% !important;
+}
+
+.typing {
+  display: block !important;     
+  white-space: normal !important; 
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  width: 100% !important;
+  max-width: 100% !important;     /* block overflow */
+}
+
+.typing-caret {
+  display: inline-block;
+  vertical-align: middle;
+}
 
   </style>
 </head>
