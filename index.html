@@ -229,7 +229,7 @@
           <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/anand-shinde-07aa45308" target="_blank">linkedin.com/in/anand-shinde-07aa45308</a>
         </div>
       </div>
-      <button id="chatbot">🤖</button>
+      <button id="chatbot">AI</button>
       <div id="chatbox">
         <header>AI Assistant</header>
         <div class="messages"></div>
@@ -255,10 +255,14 @@
     const botBtn=document.getElementById('chatbot'); const box=document.getElementById('chatbox');
     const input=document.getElementById('chat-input'); const send=box.querySelector('.send-btn'); const msgs=box.querySelector('.messages');
     const replyMap={about:"I have 19+ years experience in Powertrain, Automation, Washers & Conveyors.",experience:"I have worked with TATA Cummins, PSA, Daimler, GM, Ford and more.",projects:"Major projects include robotic deburring, industrial washers, conveyors, fixtures.",contact:"You can reach me at aashinde_be80@rediffmail.com or 98903 35259.",skills:"Key skills: Robotic automation, Powertrain, Industrial Washers, Conveyors, Fixtures."};
+    let typingBubble=null;
+    function showTyping(){if(typingBubble) return; typingBubble=document.createElement('div'); typingBubble.textContent='AI is typing…'; typingBubble.style.opacity='.7'; msgs.appendChild(typingBubble); msgs.scrollTop=msgs.scrollHeight;}
+    function hideTyping(){if(!typingBubble) return; msgs.removeChild(typingBubble); typingBubble=null;}
     function post(role,text){const d=document.createElement('div'); d.textContent=`${role}: ${text}`; msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight;}
-    function handle(){const m=input.value.trim(); if(!m) return; post('You',m); const l=m.toLowerCase(); let r="I'm here to help! Ask about experience, projects, skills or contact."; for(const k in replyMap){ if(l.includes(k)) r=replyMap[k]; } post('AI',r); input.value='';}
+    function handle(){const m=input.value.trim(); if(!m) return; post('You',m); const l=m.toLowerCase(); let r="I'm here to help! Ask about experience, projects, skills or contact."; for(const k in replyMap){ if(l.includes(k)) r=replyMap[k]; }
+      input.value=''; showTyping(); setTimeout(()=>{hideTyping(); post('AI',r);},700);}
     botBtn.addEventListener('click',()=>{box.style.display=box.style.display==='flex'?'none':'flex';});
-    send.addEventListener('click',handle); input.addEventListener('keypress',e=>{if(e.key==='Enter') handle();});
+    send.addEventListener('click',handle); input.addEventListener('keypress',e=>{if(e.key==='Enter') handle();});('keypress',e=>{if(e.key==='Enter') handle();});
   </script>
 </body>
 </html>
