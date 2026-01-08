@@ -1,263 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anand Shinde - Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Fira+Code&display=swap" rel="stylesheet">
-<style>
-/* Reset & basic styles */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Roboto', sans-serif; background: #f5f6fa; color: #1a1a1a; line-height: 1.6; }
-a { text-decoration: none; color: inherit; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anand Shinde — Premium Professional Portfolio</title>
+  <meta name="description" content="Portfolio of Anand Shinde — Manager, Powertrain | Robotic Automation | Industrial Washers | Conveyors | Fixtures | 19+ Years of Design & R&D Experience." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--brand1:#4e54c8;--brand2:#8f94fb;--ink:#0f0f14;--muted:#6b7280;--bg:#f6f7fb;--card:#ffffff;--accent:#ffe66d}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.75}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    html{scroll-behavior:smooth}
 
-/* Smooth scrolling */
-html { scroll-behavior: smooth; }
+    .container{max-width:1160px;margin-inline:auto;padding:2rem}
 
-/* Header */
-header { display: flex; align-items: center; justify-content: space-between; padding: 2rem; background: linear-gradient(90deg,#4e54c8,#8f94fb); color: #fff; }
-header .logo { font-size: 1.8rem; font-weight: 700; }
-header nav a { margin-left: 1.5rem; font-weight: 500; transition: 0.3s; }
-header nav a:hover { text-decoration: underline; }
+    /* HEADER */
+    header{position:sticky;top:0;z-index:60;background:linear-gradient(90deg,var(--brand1),var(--brand2));color:#fff;box-shadow:0 14px 32px rgba(0,0,0,.12)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.25rem 2rem}
+    .logo{font-weight:900;font-size:1.55rem;letter-spacing:.3px}
+    .nav nav{display:flex;align-items:center;gap:1.35rem}
+    .nav a{font-weight:600;opacity:.92}
+    .nav a:hover{text-decoration:underline;opacity:1}
 
-/* Hero section */
-.hero { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 4rem 2rem; background: linear-gradient(135deg,#8f94fb,#4e54c8); color: #fff; border-radius: 0 0 50% 50% / 20%; }
-.hero .info { flex:1; max-width:600px; }
-.hero h1 { font-size: 3rem; margin-bottom: 0.5rem; }
-.hero h3 { font-weight:400; margin-bottom: 1rem; }
-.hero .typing { font-family: 'Fira Code', monospace; font-weight:700; color:#ffe600; }
-.hero img { border-radius:50%; width:200px; height:200px; object-fit:cover; border:4px solid #fff; }
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:center;padding:3.75rem 0}
+    .hero > :first-child{order:1} /* text / typing on left */
+    .hero > :last-child{order:2}  /* profile photo on right */
+    .hero-card{background:linear-gradient(135deg,var(--brand2),var(--brand1));color:#fff;border-radius:2.1rem;padding:2.6rem;box-shadow:0 26px 52px rgba(0,0,0,.2)}
+    .hero-card h1{font-size:3.1rem;font-weight:900;margin-bottom:.3rem}
+    .hero-card h3{font-weight:600;margin-bottom:1.1rem}
+    .typing{font-family:'Fira Code',monospace;font-weight:700;color:var(--accent);letter-spacing:.3px}
+    .actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.4rem}
+    .btn{padding:.9rem 1.55rem;border-radius:999px;font-weight:800;background:#fff;color:var(--brand1);box-shadow:0 10px 20px rgba(0,0,0,.16)}
+    .btn.secondary{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.38)}
+    .btn:hover{transform:translateY(-2px)}
+    .avatar-wrap{display:flex;justify-content:center}
+    .avatar{width:235px;height:235px;border-radius:50%;object-fit:cover;border:5px solid #fff;box-shadow:0 22px 46px rgba(0,0,0,.22)}
 
-/* Section styles */
-section { padding: 3rem 2rem; max-width: 1000px; margin: 0 auto; }
-section h2 { font-size:2rem; color:#4e54c8; margin-bottom:1.5rem; position: relative; }
-section h2::after { content:''; width:50px; height:4px; background:#8f94fb; display:block; margin-top:0.5rem; border-radius:2px; }
+    @media(max-width:880px){
+      .hero{grid-template-columns:1fr} /* keep same order on mobile — text above, photo below */
+      .avatar{width:195px;height:195px}
+      .hero-card{border-radius:1.6rem}
+    }
 
-/* Info grid */
-.info-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
-.info-grid div { background:#fff; padding:1.5rem; border-radius:15px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition:0.3s; }
-.info-grid div:hover { transform: translateY(-5px); }
+    /* SECTIONS */ */
+    section{padding:3.1rem 0}
+    .title{font-size:2.05rem;color:var(--brand1);margin-bottom:1.15rem;font-weight:900}
+    .title::after{content:'';display:block;width:76px;height:4px;border-radius:2px;background:var(--brand2);margin-top:.45rem}
 
-/* Collapsible sections */
-details { background:#fff; padding:1rem 1.5rem; margin-bottom:1rem; border-radius:12px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
-summary { font-weight:600; cursor:pointer; font-size:1.1rem; outline:none; }
-details[open] summary::after { content:"▲"; float:right; }
-summary::after { content:"▼"; float:right; }
+    .grid{display:grid;gap:1.2rem}
+    @media(min-width:780px){.grid.cols-2{grid-template-columns:repeat(2,1fr)}.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
 
-/* Buttons */
-.button { display:inline-block; margin-top:1rem; padding:0.7rem 1.5rem; background:#4e54c8; color:#fff; border-radius:50px; font-weight:600; transition:0.3s; }
-.button:hover { background:#8f94fb; }
+    .card{background:var(--card);border-radius:1.35rem;padding:1.6rem;box-shadow:0 14px 34px rgba(0,0,0,.06);transition:transform .25s}
+    .card:hover{transform:translateY(-3px)}
+    .muted{color:var(--muted)}
 
-/* Footer */
-footer { text-align:center; padding:2rem; margin-top:2rem; color:#777; font-size:0.9rem; }
+    details{background:var(--card);border-radius:1.15rem;padding:1.3rem 1.35rem;box-shadow:0 12px 28px rgba(0,0,0,.07);margin-bottom:1rem}
+    summary{font-weight:800;cursor:pointer}
 
-/* Floating chatbot button & box */
-#chatbot { position:fixed; bottom:30px; right:30px; background:#4e54c8; color:#fff; border:none; border-radius:50%; width:60px; height:60px; font-size:1.8rem; cursor:pointer; box-shadow:0 8px 20px rgba(0,0,0,0.3); }
-#chatbox { position:fixed; bottom:100px; right:30px; width:320px; max-width:90%; background:#fff; border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.2); display:none; flex-direction:column; overflow:hidden; }
-#chatbox header { background:#4e54c8; color:#fff; padding:0.8rem 1rem; font-weight:600; }
-#chatbox .messages { padding:1rem; height:250px; overflow-y:auto; font-size:0.9rem; }
-#chatbox .input-container { display:flex; border-top:1px solid #ddd; }
-#chatbox input { border:none; padding:0.8rem; flex:1; outline:none; font-size:0.9rem; }
-#chatbox button.send-btn { background:#4e54c8; color:#fff; border:none; padding:0 1rem; cursor:pointer; font-weight:600; transition:0.3s; }
-#chatbox button.send-btn:hover { background:#8f94fb; }
-</style>
+    footer{text-align:center;padding:2.2rem 0;color:var(--muted);font-size:.9rem}
+
+    /* CHATBOT */
+    #chatbot{position:fixed;bottom:28px;right:28px;width:68px;height:68px;border-radius:20px;border:none;display:flex;align-items:center;justify-content:center;font-size:1.65rem;font-weight:900;cursor:pointer;background:linear-gradient(135deg,var(--brand1),var(--brand2));color:#fff;box-shadow:0 26px 46px rgba(0,0,0,.32);transition:all .28s ease}
+    #chatbot:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 34px 60px rgba(0,0,0,.38)}
+    #chatbot:active{transform:scale(.96)}
+    #chatbox{position:fixed;bottom:108px;right:28px;width:380px;max-width:94%;background:#fff;border-radius:1.35rem;box-shadow:0 28px 54px rgba(0,0,0,.34);display:none;flex-direction:column;overflow:hidden;border:1px solid #e5e7eb}
+    #chatbox header{background:var(--brand1);color:#fff;padding:.95rem 1rem;font-weight:900}
+    #chatbox .messages{padding:1rem;height:270px;overflow-y:auto;font-size:.92rem}
+    #chatbox .input-container{display:flex;border-top:1px solid #e5e7eb}
+    #chatbox input{flex:1;border:none;padding:.9rem;font-size:.9rem;outline:none}
+    #chatbox button.send-btn{background:var(--brand1);border:none;color:#fff;padding:0 1.05rem;font-weight:800;cursor:pointer}
+    #chatbox button.send-btn:hover{background:var(--brand2)}
+
+    @media(max-width:880px){.hero{grid-template-columns:1fr}.avatar{width:195px;height:195px}.hero-card{border-radius:1.6rem}}
+  </style>
 </head>
 <body>
+  <header>
+    <div class="nav">
+      <div class="logo">Anand Shinde</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<!-- Header -->
-<header>
-<div class="logo">Anand Shinde</div>
-<nav>
-<a href="#about">About</a>
-<a href="#experience">Experience</a>
-<a href="#projects">Projects</a>
-<a href="#education">Education</a>
-<a href="#contact">Contact</a>
-</nav>
-</header>
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-card">
+        <h1>Anand Shinde</h1>
+        <h3>Manager, Powertrain — Engineering & Development</h3>
+        <div class="typing">Robotic Automation • Powertrain Projects • Industrial Washers • Conveyors • Fixtures</div>
+        <div class="actions">
+          <a href="https://www.linkedin.com/in/anand-shinde-07aa45308" target="_blank" class="btn secondary">LinkedIn</a>
+        </div>
+      </div>
+      <div class="avatar-wrap">
+        <img src="profile.jpg" alt="Profile — Anand Shinde" class="avatar" />
+      </div>
+    </section>
 
-<!-- Hero Section -->
-<section class="hero">
-<div class="info">
-<h1>Anand Shinde</h1>
-<h3>Manager, Powertrain — Engineering & Development</h3>
-<div class="typing">Robotic Automation | Powertrain Projects | Industrial Washers | Conveyors | Fixtures</div>
-<a href="resume.pdf" class="button" target="_blank">Download Resume</a>
-<a href="https://www.linkedin.com/in/anand-shinde-07aa45308" class="button" target="_blank">LinkedIn</a>
-</div>
-<img src="profile.jpg" alt="Anand Shinde Profile">
-</section>
+    <!-- ABOUT / PERSONAL INFORMATION -->
+    <section id="about">
+      <h2 class="title">Personal Information</h2>
+      <div class="grid cols-3">
+        <div class="card"><strong>Mobile</strong><br>98903 35259<br><span class="muted">Alternate: 8669414519</span></div>
+        <div class="card"><strong>Email</strong><br>aashinde_be80@rediffmail.com<br><span class="muted">Location: Hadapsar, Pune - 28</span></div>
+        <div class="card"><strong>DOB</strong><br>27th Feb 1980<br><span class="muted">Gender: Male</span></div>
+        <div class="card"><strong>Nationality</strong><br>Indian<br><span class="muted">Marital Status: Married</span></div>
+        <div class="card"><strong>Languages</strong><br>English, Hindi, Marathi<br><span class="muted">Father's Name: Dr. Anil Mahadeorao Shinde</span></div>
+        <div class="card"><strong>Experience</strong><br>19 Years 05 Months in Design & R&D</div>
+      </div>
 
-<!-- About Section -->
-<section id="about">
-<h2>Personal Information</h2>
-<div class="info-grid">
-<div><strong>Mobile:</strong> 98903 35259<br><strong>Alternate:</strong> 8669414519</div>
-<div><strong>Email:</strong> aashinde_be80@rediffmail.com<br><strong>Location:</strong> Hadapsar, Pune - 28</div>
-<div><strong>DOB:</strong> 27th Feb 1980<br><strong>Gender:</strong> Male</div>
-<div><strong>Nationality:</strong> Indian<br><strong>Marital Status:</strong> Married</div>
-<div><strong>Languages:</strong> English, Hindi, Marathi<br><strong>Father's Name:</strong> Dr. Anil Mahadeorao Shinde</div>
-</div>
+      <h2 class="title" style="margin-top:2.1rem">Professional Summary</h2>
+      <div class="card">
+        <p><strong>Current Role:</strong> Manager, Powertrain (Engineering & Development Department)</p>
+        <p><strong>Objective:</strong> Achieve success through hard work & continuous learning through experience</p>
+        <p><strong>Key Strengths:</strong> Powertrain projects, proposals, cost estimation, machine design as per Industry 4.0 and safety standards, leading design teams, supplier development, customer interaction</p>
+      </div>
 
-<h2>Professional Summary</h2>
-<p>Experience: 19 Years 05 months in Design & R&D</p>
-<p>Current Role: Manager, Powertrain (Engineering & Development Department)</p>
-<p>Objective: Achieve success through hard work & continuous learning through experience</p>
-<p>Key Strengths: Powertrain projects, proposals, cost estimation, machine design as per Industry 4.0 and safety standards, leading design teams, supplier development, customer interaction</p>
+      <h2 class="title" style="margin-top:2.1rem">CAD Skills</h2>
+      <div class="card">
+        AutoCAD 2000–2018, Autodesk Inventor 2018, UG NX11.0 — Familiar: Solid Edge V20, Catia V5R19<br>
+        <span class="muted">Clients: TATA Cummins, Cummins India Limited, Cummins Jamshedpur, PSA, Daimler</span>
+      </div>
+    </section>
 
-<h2>CAD Skills</h2>
-<p>AutoCAD 2000–2018, Autodesk Inventor 2018, UG NX11.0 | Familiar: Solid Edge V20, Catia V5R19</p>
-<p>Clients: TATA Cummins, Cummins India Limited, Cummins Jamshedpur, PSA, Daimler</p>
-</section>
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2 class="title">Professional Experience</h2>
 
-<!-- Experience Section -->
-<section id="experience">
-<h2>Professional Experience</h2>
+      <details open>
+        <summary>CHROPYNSKA INDIA PVT. LTD. — Manager, Powertrain (Apr 2023 – Present)</summary>
+        <p>Leading Powertrain projects, proposals, and supplier development.<br>Clients: TATA Cummins, Cummins India, PSA, Daimler</p>
+        <ul>
+          <li>Individual handling of Powertrain projects, proposals & cost estimation</li>
+          <li>Design machines per Industry 4.0 & safety standards</li>
+          <li>Lead design team, supplier development, and support installation</li>
+          <li>CAD: AutoCAD, Inventor, UG NX11.0</li>
+        </ul>
+      </details>
 
-<details>
-<summary>CHROPYNSKA INDIA PVT. LTD. — Manager, Powertrain (Apr 2023 – Present)</summary>
-<p>Leading Powertrain projects, proposals, and supplier development.<br>Clients: TATA Cummins, Cummins India, PSA, Daimler</p>
-<ul>
-<li>Individual handling of Powertrain projects, proposals & cost estimation.</li>
-<li>Design machines per Industry 4.0 & safety standards.</li>
-<li>Lead design team, supplier development, and support installation.</li>
-<li>CAD: AutoCAD, Inventor, UG NX11.0</li>
-</ul>
-</details>
+      <details>
+        <summary>Valiant-TMS Systems Pvt. Ltd., Pune — Manager, Powertrain (Nov 2012 – Mar 2023)</summary>
+        <ul>
+          <li>Robotic automation, industrial washers, conveyors & battery assembly automation</li>
+          <li>Design & install robotic deburring stations & high-pressure robotic washers for TATA Cummins Phaltan</li>
+          <li>Automation for PSA & Mercedes-Benz main line</li>
+          <li>Design battery cell fixtures, leak testing machines, conveyors, grippers</li>
+          <li>Coordinate with Valiant TMS Canada for approvals</li>
+          <li>Clients: GM, Allison, Chrysler, Ford, Hiram, Hirata, UTC</li>
+        </ul>
+      </details>
 
-<details>
-<summary>Valiant-TMS Systems Pvt. Ltd., Pune — Manager, Powertrain (Nov 2012 – Mar 2023)</summary>
-<ul>
-<li>Robotic automation, industrial washers, conveyors & battery assembly automation.</li>
-<li>Design & install robotic deburring stations & high-pressure robotic washers for TATA Cummins Phaltan.</li>
-<li>Automation for PSA & Mercedes-Benz main line.</li>
-<li>Design battery cell fixtures, leak testing machines, conveyors, grippers.</li>
-<li>Coordinate with Valiant TMS Canada for approvals.</li>
-<li>Clients: GM, Allison, Chrysler, Ford, Hiram, Hirata, UTC</li>
-</ul>
-</details>
+      <details>
+        <summary>Zippel GmbH & Co. Pvt. Ltd., Pune — Sr. Design Engineer (Jun 2010 – Nov 2012)</summary>
+        <ul>
+          <li>Industrial washers: G.A., P&ID, pump, nozzle, sensor, cylinder & valve selection</li>
+          <li>Conveyor systems: powered, gravitational, chain, roller, lift & carry machines</li>
+          <li>Fixture design for cylinder head, block, crankshaft washing</li>
+          <li>Sheet metal design, nesting, foam selection</li>
+          <li>Filter design: high/low pressure, magnetic, paper-band, up-flow filters</li>
+        </ul>
+      </details>
 
-<details>
-<summary>Zippel GmbH & Co. Pvt. Ltd., Pune — Sr. Design Engineer (Jun 2010 – Nov 2012)</summary>
-<ul>
-<li>Industrial washers: G.A., P&ID, pump, nozzle, sensor, cylinder & valve selection.</li>
-<li>Conveyor systems: powered, gravitational, chain, roller, lift & carry machines.</li>
-<li>Fixture design for cylinder head, block, crankshaft washing.</li>
-<li>Sheet metal design, nesting, foam selection.</li>
-<li>Filter design: high/low pressure, magnetic, paper-band, up-flow filters.</li>
-</ul>
-</details>
+      <details>
+        <summary>Filtration Technik India — Sr. Project Engineer (Apr 2009 – Jun 2010)</summary>
+        <ul>
+          <li>High-pressure piping design for air/gas filters & dryers</li>
+          <li>Prepare layouts, BOMs, and quotes for prototypes</li>
+          <li>Vendor development & cost reduction</li>
+        </ul>
+      </details>
 
-<details>
-<summary>Filtration Technik India — Sr. Project Engineer (Apr 2009 – Jun 2010)</summary>
-<ul>
-<li>High-pressure piping design for air/gas filters & dryers.</li>
-<li>Prepare layouts, BOMs, and quotes for prototypes.</li>
-<li>Vendor development & cost reduction.</li>
-</ul>
-</details>
+      <details>
+        <summary>Kirloskar Pneumatic Co. Ltd. — Sr. Design Engineer (Aug 2005 – Mar 2009)</summary>
+        <ul>
+          <li>Design of reciprocating compressors & heat exchangers</li>
+          <li>Sheet metal & structure design: enclosures, 3D & 2D drawings</li>
+          <li>Trials for CFM & pressure compliance (ASME standards)</li>
+        </ul>
+      </details>
 
-<details>
-<summary>Kirloskar Pneumatic Co. Ltd. — Sr. Design Engineer (Aug 2005 – Mar 2009)</summary>
-<ul>
-<li>Design of reciprocating compressors & heat exchangers.</li>
-<li>Sheet metal & structure design: enclosures, 3D & 2D drawings.</li>
-<li>Trials for CFM & pressure compliance (ASME standards).</li>
-</ul>
-</details>
+      <h2 class="title" style="margin-top:1.6rem">Core Expertise & Skills</h2>
+      <div class="card">
+        Robotic automation, powertrain project management, industrial washers, conveyors, fixtures<br>
+        <span class="muted">International clients: GM, Ford, Cummins, Daimler, Honda, PSA, Chrysler</span>
+      </div>
+    </section>
 
-<h2>Core Expertise & Skills</h2>
-<p>Robotic automation, powertrain project management, industrial washers, conveyors, fixtures</p>
-<p>International clients: GM, Ford, Cummins, Daimler, Honda, PSA, Chrysler</p>
-</section>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 class="title">Major Projects & Work Areas</h2>
+      <div class="card">
+        <p><strong>Work Areas:</strong> Robotic Automation, Deburring & Washing Systems, Robot & Cobot Handling, Customer Interaction, RFQs, Cost-Effective Solutions</p><br>
+        <p><strong>Clients:</strong> GM, Ford, Canoo, Nemak, Honda USA, Caterpillar, Chrysler, Cummins USA</p><br>
+        <p><strong>Major Projects:</strong> Deburring systems, industrial washers, Robot & Cobot handling systems, conveyors, gantry, AGVs, Automation & inspection stations, BIW fixturing, BIW line conveyors, High-pressure air compressors, turboexpander cooling</p>
+      </div>
+    </section>
 
-<!-- Projects Section -->
-<section id="projects">
-<h2>Major Projects & Work Areas</h2>
-<p><strong>Work Areas:</strong> Robotic Automation, Deburring & Washing Systems, Robot & Cobot Handling, Customer Interaction, RFQs, Cost-Effective Solutions</p>
-<p><strong>Clients:</strong> GM, Ford, Canoo, Nemak, Honda USA, Caterpillar, Chrysler, Cummins USA</p>
-<p><strong>Major Projects:</strong> Deburring systems, industrial washers, Robot & Cobot handling systems, conveyors, gantry, AGVs, Automation & inspection stations, BIW fixturing, BIW line conveyors, High-pressure air compressors, turboexpander cooling</p>
-</section>
+    <!-- EDUCATION -->
+    <section id="education">
+      <h2 class="title">Education</h2>
+      <div class="grid cols-2">
+        <div class="card">B.E. Mechanical (2005) – B.V.C.O.E. Pune | Project: Automatic Chalk Making Machine | Seminar: Flight Data Recorder<br><span class="muted">Extra Activities: Table Tennis, Swimming Champion</span></div>
+        <div class="card">H.S.C. – R.B.N.B. College, Srirampur<br>S.S.C. – K.J.S. High School, Srirampur</div>
+      </div>
+    </section>
 
-<!-- Education Section -->
-<section id="education">
-<h2>Education</h2>
-<p>B.E. Mechanical (2005) – B.V.C.O.E. Pune | Project: Automatic Chalk Making Machine | Seminar: Flight Data Recorder</p>
-<p>Extra Activities: Table Tennis, Swimming Champion</p>
-<p>H.S.C. – R.B.N.B. College, Srirampur</p>
-<p>S.S.C. – K.J.S. High School, Srirampur</p>
-</section>
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="title">Contact & Interactive Features</h2>
+      <div class="card" style="display:flex;flex-direction:column;gap:1rem;line-height:1.85">
+        <div style="display:flex;flex-wrap:wrap;gap:.8rem">
+          <a class="btn" href="resume.pdf" target="_blank">Download Resume</a>
+        </div>
+        <div>
+          <strong>Email:</strong> aashinde_be80@rediffmail.com<br>
+          <strong>Mobile:</strong> 98903 35259<br>
+          <strong>Alternate:</strong> 8669414519<br>
+          <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/anand-shinde-07aa45308" target="_blank">linkedin.com/in/anand-shinde-07aa45308</a>
+        </div>
+      </div>
+      <button id="chatbot">🤖</button>
+      <div id="chatbox">
+        <header>AI Assistant</header>
+        <div class="messages"></div>
+        <div class="input-container">
+          <input id="chat-input" type="text" placeholder="Ask about my portfolio..." />
+          <button class="send-btn">Send</button>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<!-- Contact Section -->
-<section id="contact">
-<h2>Contact & Interactive Features</h2>
-<p>Download Resume: <a href="resume.pdf" class="button" target="_blank">Download Resume</a></p>
-<p>LinkedIn: <a href="https://www.linkedin.com/in/anand-shinde-07aa45308" class="button" target="_blank">LinkedIn Profile</a></p>
-<p>Floating AI Chatbot for quick info:</p>
-<button id="chatbot">🤖</button>
-<div id="chatbox">
-<header>AI Assistant</header>
-<div class="messages"></div>
-<div class="input-container">
-<input type="text" placeholder="Ask about my portfolio..." id="chat-input">
-<button class="send-btn">Send</button>
-</div>
-</div>
-</section>
+  <footer>
+    © 2025 Anand Shinde | Designed as a World‑Class Portfolio
+  </footer>
 
-<footer>
-<p>&copy; 2025 Anand Shinde | Designed as a World-Class Portfolio</p>
-</footer>
+  <script>
+    // Typing animation
+    const typing=document.querySelector('.typing');
+    const txt=typing.textContent; typing.textContent=''; let i=0;
+    (function loop(){typing.textContent=txt.slice(0,++i); if(i>txt.length) i=0; setTimeout(loop,105);})();
 
-<script>
-// Typing effect
-const typing = document.querySelector('.typing');
-const text = typing.textContent;
-typing.textContent = '';
-let i = 0;
-function typeWriter() {
-  typing.textContent = text.slice(0, i + 1);
-  i++;
-  if(i>text.length) i=0;
-  setTimeout(typeWriter,100);
-}
-typeWriter();
-
-// Chatbot toggle
-const chatbotBtn = document.getElementById('chatbot');
-const chatbox = document.getElementById('chatbox');
-const chatInput = document.getElementById('chat-input');
-const sendBtn = chatbox.querySelector('.send-btn');
-const chatMessages = chatbox.querySelector('.messages');
-
-function sendMessage() {
-  const message = chatInput.value.trim();
-  if(!message) return;
-  const userMsg = document.createElement('div'); userMsg.textContent = "You: " + message;
-  chatMessages.appendChild(userMsg);
-
-  // Smart replies
-  const replyMap = {
-    about: "I have 19+ years experience in Powertrain, Automation, Washers & Conveyors.",
-    experience: "I have worked with TATA Cummins, PSA, Daimler, GM, Ford and more.",
-    projects: "Major projects include robotic deburring, industrial washers, conveyors, fixtures.",
-    contact: "You can reach me at aashinde_be80@rediffmail.com or 98903 35259.",
-    skills: "Key skills: Robotic automation, Powertrain, Industrial Washers, Conveyors, Fixtures."
-  };
-  const lower = message.toLowerCase();
-  let aiReply = "I'm here to help! Ask about experience, projects, skills or contact.";
-  for(const key in replyMap){
-    if(lower.includes(key)) aiReply = replyMap[key];
-  }
-  const botMsg = document.createElement('div'); botMsg.textContent = "AI: " + aiReply;
-  chatMessages.appendChild(botMsg);
-  chatInput.value='';
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-chatbotBtn.addEventListener('click', ()=>{ chatbox.style.display = chatbox.style.display==='flex'?'none':'flex'; });
-sendBtn.addEventListener('click', sendMessage);
-chatInput.addEventListener('keypress', e=>{ if(e.key==='Enter'){ sendMessage(); } });
-</script>
+    // Chatbot behaviour
+    const botBtn=document.getElementById('chatbot'); const box=document.getElementById('chatbox');
+    const input=document.getElementById('chat-input'); const send=box.querySelector('.send-btn'); const msgs=box.querySelector('.messages');
+    const replyMap={about:"I have 19+ years experience in Powertrain, Automation, Washers & Conveyors.",experience:"I have worked with TATA Cummins, PSA, Daimler, GM, Ford and more.",projects:"Major projects include robotic deburring, industrial washers, conveyors, fixtures.",contact:"You can reach me at aashinde_be80@rediffmail.com or 98903 35259.",skills:"Key skills: Robotic automation, Powertrain, Industrial Washers, Conveyors, Fixtures."};
+    function post(role,text){const d=document.createElement('div'); d.textContent=`${role}: ${text}`; msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight;}
+    function handle(){const m=input.value.trim(); if(!m) return; post('You',m); const l=m.toLowerCase(); let r="I'm here to help! Ask about experience, projects, skills or contact."; for(const k in replyMap){ if(l.includes(k)) r=replyMap[k]; } post('AI',r); input.value='';}
+    botBtn.addEventListener('click',()=>{box.style.display=box.style.display==='flex'?'none':'flex';});
+    send.addEventListener('click',handle); input.addEventListener('keypress',e=>{if(e.key==='Enter') handle();});
+  </script>
 </body>
 </html>
